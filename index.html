@@ -1553,7 +1553,7 @@
 <nav class="nav">
   <div class="nav-inner">
     <a href="#top" class="nav-logo" aria-label="Contratamos Complementos — Inicio">
-      <img src="logo.png" alt="Contratamos Complementos" width="200" height="44">
+      <img src="logo.png" alt="Contratamos Complementos" width="200" height="44" fetchpriority="high">
     </a>
     <ul class="nav-links">
       <li><a href="#somos">Nosotros</a></li>
@@ -2110,7 +2110,7 @@
             <a href="#" class="social-link" aria-label="LinkedIn" data-social="linkedin">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             </a>
-            <a href="https://www.instagram.com/contratamos_complementos_/" class="social-link" aria-label="Instagram" data-social="instagram">
+            <a href="#" class="social-link" aria-label="Instagram" data-social="instagram">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
             </a>
             <a href="#" class="social-link" aria-label="Facebook" data-social="facebook">
@@ -2244,7 +2244,7 @@
     // ══════════════════════════════════════════════════════════════════
     whatsapp: {
       comercial:      '573116449629',  // 👈 Para cotizaciones / clientes
-      gestionHumana:  '573126711554',  // 👈 Para hojas de vida / candidatos
+      gestionHumana:  '573208430044',  // 👈 Para hojas de vida / candidatos
     },
 
     // ══════════════════════════════════════════════════════════════════
@@ -2279,9 +2279,35 @@
     // ══════════════════════════════════════════════════════════════════
     redesSociales: {
       linkedin:  '#',  // 👈 Ej: 'https://linkedin.com/company/contratamos-complementos'
-      instagram: '#',  // 👈 Ej: 'https://instagram.com/contratamoscomplementos'
+      instagram: 'https://www.instagram.com/contratamos_complementos_/',  // 👈 Ej: 'https://instagram.com/contratamoscomplementos'
       facebook:  '#',  // 👈 Ej: 'https://facebook.com/contratamoscomplementos'
     },
+
+    // ══════════════════════════════════════════════════════════════════
+    // 📰 NOTICIAS Y OFERTAS — desde Google Sheets (sin programar)
+    // ───────────────────────────────────────────────────────────────────
+    // Esta opción permite que UNA PERSONA QUE NO PROGRAMA pueda
+    // actualizar las noticias, ofertas y comunicados del sitio.
+    //
+    // Cómo activarlo (10 minutos, paso a paso):
+    //   1. Vaya a https://sheets.new (Google Sheets)
+    //   2. Cree una hoja con estas columnas en la fila 1 (TAL CUAL):
+    //        tipo  |  fecha  |  titulo  |  resumen  |  meta  |  link
+    //
+    //   3. Tipos válidos: oferta, noticia, comunicado
+    //   4. Fecha en formato AAAA-MM-DD (ejemplo: 2026-04-15)
+    //   5. Llene una fila por cada noticia/oferta
+    //
+    //   6. Publique la hoja:
+    //      Archivo → Compartir → Publicar en la web → Hoja → CSV → Publicar
+    //      Le darán una URL que termina en /pub?...&output=csv
+    //
+    //   7. Pegue esa URL aquí abajo (entre las comillas).
+    //
+    // Si lo deja como '' (vacío), el sitio usa las noticias hardcoded
+    // que están en NEWS_ITEMS más abajo en este archivo.
+    // ══════════════════════════════════════════════════════════════════
+    noticiasGoogleSheet: '',  // 👈 Pegue aquí la URL del CSV publicado de Google Sheets
 
   };
   /* ════════ FIN DE LA CONFIGURACIÓN — Lo de abajo es lógica del sitio ════════ */
@@ -2513,6 +2539,8 @@
   }
 
   // Configura validación en tiempo real para todos los formularios
+  const FORM_LOAD_TIME = Math.floor(Date.now() / 1000);  // tiempo de carga (anti-bot)
+
   document.querySelectorAll('form.form').forEach(form => {
 
     // Filtros de input: bloquea caracteres no permitidos al escribir
@@ -2592,6 +2620,7 @@
       // El PHP usa estos campos para saber a dónde enviar y cómo formatear
       formData.append('_kind', kind);                    // 'cotizacion' | 'hoja-vida'
       formData.append('_destino', correoDestino);        // correo a donde llega
+      formData.append('_form_time', FORM_LOAD_TIME);     // timestamp para detectar bots
 
       // 4. Mostrar estado "enviando" en el botón (solo cambia el texto, sin spinner)
       const submitBtn = form.querySelector('button[type="submit"]');
@@ -2628,9 +2657,17 @@
     });
   });
 
-  // ============= NEWS & ANNOUNCEMENTS =============
-  // Para agregar nuevas entradas, añada objetos a este array.
-  // Tipos: "oferta" | "noticia" | "comunicado"
+  /* ═══════════════════════════════════════════════════════════════════
+     📰 NOTICIAS Y OFERTAS LABORALES
+     ───────────────────────────────────────────────────────────────────
+     Si CONFIG.noticiasGoogleSheet tiene una URL, las noticias se cargan
+     desde ese Google Sheet (la persona puede editarlas sin programar).
+     Si está vacío, se usan las noticias del array NEWS_ITEMS abajo.
+     ═══════════════════════════════════════════════════════════════════ */
+
+  // Noticias por defecto (se usan si NO hay Google Sheet configurado).
+  // Para agregar entradas, copie un objeto y modifíquelo.
+  // Tipos válidos: "oferta" | "noticia" | "comunicado"
   const NEWS_ITEMS = [
     {
       type: 'oferta',
@@ -2688,39 +2725,113 @@
     comunicado: 'Comunicado'
   };
 
+  // Almacena las noticias activas (puede venir de Sheets o del array)
+  let activeNews = [...NEWS_ITEMS];
+
   function formatDate(iso) {
     const d = new Date(iso + 'T00:00:00');
+    if (isNaN(d.getTime())) return iso;
     const months = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
     return `${d.getDate()} ${months[d.getMonth()]}, ${d.getFullYear()}`;
+  }
+
+  // Parser CSV simple (maneja comillas y comas dentro de campos)
+  function parseCSV(text) {
+    const rows = [];
+    let row = [], field = '', inQuotes = false;
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i];
+      if (inQuotes) {
+        if (c === '"' && text[i+1] === '"') { field += '"'; i++; }
+        else if (c === '"') { inQuotes = false; }
+        else { field += c; }
+      } else {
+        if (c === '"') { inQuotes = true; }
+        else if (c === ',') { row.push(field); field = ''; }
+        else if (c === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
+        else if (c === '\r') { /* ignorar */ }
+        else { field += c; }
+      }
+    }
+    if (field || row.length) { row.push(field); rows.push(row); }
+    return rows;
+  }
+
+  // Carga noticias desde el Google Sheet publicado como CSV
+  async function loadNewsFromGoogleSheet(url) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('No se pudo descargar el sheet');
+      const csv = await response.text();
+      const rows = parseCSV(csv);
+      if (rows.length < 2) return null;
+
+      // Primera fila = headers (esperamos: tipo, fecha, titulo, resumen, meta, link)
+      const headers = rows[0].map(h => h.trim().toLowerCase());
+      const idxTipo    = headers.indexOf('tipo');
+      const idxFecha   = headers.indexOf('fecha');
+      const idxTitulo  = headers.indexOf('titulo');
+      const idxResumen = headers.indexOf('resumen');
+      const idxMeta    = headers.indexOf('meta');
+      const idxLink    = headers.indexOf('link');
+
+      if (idxTipo < 0 || idxTitulo < 0) {
+        console.warn('[News] El Google Sheet no tiene las columnas requeridas');
+        return null;
+      }
+
+      const items = [];
+      for (let i = 1; i < rows.length; i++) {
+        const r = rows[i];
+        const tipo = (r[idxTipo] || '').trim().toLowerCase();
+        const titulo = (r[idxTitulo] || '').trim();
+        if (!tipo || !titulo) continue; // saltar filas vacías
+
+        items.push({
+          type:    ['oferta','noticia','comunicado'].includes(tipo) ? tipo : 'noticia',
+          date:    (r[idxFecha] || '').trim(),
+          title:   titulo,
+          excerpt: (r[idxResumen] || '').trim(),
+          meta:    (r[idxMeta] || '').trim(),
+          link:    (r[idxLink] || '#').trim() || '#'
+        });
+      }
+
+      console.log('[News] ' + items.length + ' entradas cargadas desde Google Sheets ✓');
+      return items;
+    } catch (err) {
+      console.warn('[News] Error cargando desde Google Sheets, usando noticias por defecto:', err);
+      return null;
+    }
   }
 
   function renderNews(filter = 'all') {
     const grid = document.getElementById('news-grid');
     if (!grid) return;
     const filtered = filter === 'all'
-      ? NEWS_ITEMS
-      : NEWS_ITEMS.filter(n => n.type === filter);
+      ? activeNews
+      : activeNews.filter(n => n.type === filter);
 
     if (filtered.length === 0) {
       grid.innerHTML = '<div class="news-empty">No hay publicaciones en esta categoría por ahora.</div>';
       return;
     }
 
-    // Sort by date descending
-    const sorted = [...filtered].sort((a, b) => b.date.localeCompare(a.date));
+    // Ordenar por fecha descendente
+    const sorted = [...filtered].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
     grid.innerHTML = sorted.map(n => `
-      <a href="${n.link}" class="news-card">
+      <a href="${n.link || '#'}" class="news-card">
         <div class="news-card-head">
-          <span class="news-tag type-${n.type}">${typeLabels[n.type]}</span>
+          <span class="news-tag type-${n.type}">${typeLabels[n.type] || 'Noticia'}</span>
           <span class="news-date">${formatDate(n.date)}</span>
         </div>
         <h3 class="news-title">${n.title}</h3>
-        <p class="news-excerpt">${n.excerpt}</p>
+        <p class="news-excerpt">${n.excerpt || ''}</p>
         <div class="news-meta">
           <span class="news-meta-item">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v6l4 2"/></svg>
-            ${n.meta}
+            ${n.meta || ''}
           </span>
           <span class="news-link">
             ${n.type === 'oferta' ? 'Aplicar' : 'Leer más'}
@@ -2731,7 +2842,17 @@
     `).join('');
   }
 
-  renderNews();
+  // Inicializa: si hay Google Sheet, lo carga; si no, usa los hardcoded
+  (async function initNews() {
+    const sheetUrl = (CONFIG.noticiasGoogleSheet || '').trim();
+    if (sheetUrl && sheetUrl.startsWith('http')) {
+      const fromSheet = await loadNewsFromGoogleSheet(sheetUrl);
+      if (fromSheet && fromSheet.length > 0) {
+        activeNews = fromSheet;
+      }
+    }
+    renderNews();
+  })();
 
   document.querySelectorAll('.news-filter').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -2847,12 +2968,28 @@
         fab.setAttribute('aria-expanded', 'false');
       }
 
-      function goToSection(sectionId) {
-        closeChat();
+      // Hace scroll a una sección sin cerrar el chat — minimiza temporalmente
+      // y al terminar el scroll vuelve a mostrar el chat con opción de continuar
+      function goToSection(sectionId, mensajeFinal) {
+        // Minimiza el chat para que el usuario pueda ver la sección
+        chatWindow.classList.remove('open');
+        fab.classList.remove('open');
+        fab.setAttribute('aria-expanded', 'false');
+
+        // Scroll a la sección
         setTimeout(function() {
           const target = document.getElementById(sectionId);
           if (target) target.scrollIntoView({ behavior: 'smooth' });
         }, 300);
+
+        // Después de un momento, prepara un mensaje de seguimiento para
+        // cuando el usuario vuelva a abrir el chat
+        setTimeout(function() {
+          addBubble(mensajeFinal || 'Le mostré la sección. ¿Necesita algo más?');
+          addOptions([
+            { label: '← Volver al menú principal', icon: ICONS.back, back: true, action: showMainMenu }
+          ]);
+        }, 1500);
       }
 
       // ─── Iconos SVG ─────────────────────────────────────────────────
@@ -2872,9 +3009,9 @@
       function showMainMenu() {
         addBubble('¡Hola! Soy <strong>Carla</strong>, su asistente virtual de Contratamos Complementos. ¿En qué puedo ayudarle hoy?');
         addOptions([
-          { label: 'Solicitar una cotización', icon: ICONS.cotizacion, action: function() { goToSection('formularios'); } },
+          { label: 'Solicitar una cotización', icon: ICONS.cotizacion, action: function() { goToSection('formularios', 'Le llevé al formulario de cotización. ¿Necesita algo más?'); } },
           { label: 'Enviar mi hoja de vida',   icon: ICONS.hojaVida,   action: showHojaVidaFlow },
-          { label: 'Conocer los servicios',    icon: ICONS.servicios,  action: function() { goToSection('servicios'); } },
+          { label: 'Conocer los servicios',    icon: ICONS.servicios,  action: function() { goToSection('servicios', 'Le mostré nuestros servicios. ¿Necesita algo más?'); } },
           { label: 'Ver ofertas laborales',    icon: ICONS.ofertas,    action: showOfertasFlow },
           { label: 'Hablar con un asesor',     icon: ICONS.asesor,     action: showAsesorFlow },
           { label: 'Información de contacto',  icon: ICONS.contacto,   action: showContactoFlow }
@@ -2886,11 +3023,12 @@
         addOptions([
           { label: 'Llenar el formulario aquí', icon: ICONS.hojaVida,
             action: function() {
-              goToSection('formularios');
+              // Activamos el tab de hoja de vida primero, luego scrolleamos
               setTimeout(function() {
                 const tab = document.querySelector('.tab[data-target="panel-candidato"]');
                 if (tab) tab.click();
-              }, 600);
+              }, 100);
+              goToSection('formularios', 'Le abrí el formulario de hoja de vida. ¿Necesita algo más?');
             }
           },
           { label: 'Escribir por WhatsApp a Gestión Humana', icon: ICONS.whatsapp,
@@ -2905,11 +3043,12 @@
         addOptions([
           { label: 'Ver ofertas activas', icon: ICONS.ofertas,
             action: function() {
-              goToSection('noticias');
+              // Aplica el filtro de "ofertas" primero
               setTimeout(function() {
                 const filterBtn = document.querySelector('.news-filter[data-filter="oferta"]');
                 if (filterBtn) filterBtn.click();
-              }, 700);
+              }, 100);
+              goToSection('noticias', 'Le mostré las ofertas laborales activas. ¿Necesita algo más?');
             }
           },
           { label: 'Enviar mi hoja de vida', icon: ICONS.hojaVida, action: showHojaVidaFlow },
@@ -2942,7 +3081,7 @@
           '📍 Vereda Chaparral, Rionegro, Antioquia'
         );
         addOptions([
-          { label: 'Ir a la sección de contacto', icon: ICONS.contacto, action: function() { goToSection('contacto'); } },
+          { label: 'Ir a la sección de contacto', icon: ICONS.contacto, action: function() { goToSection('contacto', 'Le llevé a la sección de contacto. ¿Necesita algo más?'); } },
           { label: '← Volver al menú principal',  icon: ICONS.back, back: true, action: showMainMenu }
         ]);
       }

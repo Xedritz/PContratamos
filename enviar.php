@@ -65,6 +65,21 @@ if (!empty($_POST['website'])) {
     exit;
 }
 
+// ════════════════════════════════════════════════════════════════════
+// ⏱️ DETECCIÓN POR TIEMPO — Filtro anti-spam adicional
+// ════════════════════════════════════════════════════════════════════
+// Un humano tarda al menos 3 segundos en llenar un formulario.
+// Los bots envían instantáneamente. Si llega en menos de 3s, es bot.
+if (!empty($_POST['_form_time'])) {
+    $form_load_time = (int) $_POST['_form_time'];
+    $elapsed = time() - $form_load_time;
+    if ($elapsed < 3) {
+        // Demasiado rápido — probable bot. Responder success silenciosamente.
+        echo json_encode(['success' => true]);
+        exit;
+    }
+}
+
 // Función para responder en JSON y terminar
 function respond($success, $message = '') {
     echo json_encode([
