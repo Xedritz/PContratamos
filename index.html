@@ -3,11 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="description" content="Contratamos Complementos — Gestión estratégica de personal en misión. Agilidad sin errores.">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
+<meta name="theme-color" content="#FBF9F4">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SEO BÁSICO
+     Cambie estos valores si quiere personalizar cómo aparece en Google
+     y al compartir en redes sociales (WhatsApp, LinkedIn, Facebook)
+     ═══════════════════════════════════════════════════════════════════ -->
 <title>Contratamos Complementos — Gestión Estratégica de Personal en Misión</title>
+<meta name="description" content="Conectamos el mejor talento operativo con su empresa. Reclutamiento, selección, nómina y administración de personal con rigurosidad técnica y legal.">
+<meta name="keywords" content="contratamos complementos, personal en misión, talento operativo, recursos humanos, RRHH, Rionegro, Antioquia, tercerización, nómina, selección de personal">
+<meta name="author" content="Contratamos Complementos S.A.S.">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph (cómo se ve al compartir en WhatsApp, LinkedIn, Facebook) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contratamos Complementos — Talento que sostiene su operación">
+<meta property="og:description" content="Conectamos el mejor talento operativo con su empresa. Agilidad sin errores.">
+<meta property="og:image" content="logo.png">
+<meta property="og:locale" content="es_CO">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contratamos Complementos">
+<meta name="twitter:description" content="Talento operativo para su empresa. Agilidad sin errores.">
+<meta name="twitter:image" content="logo.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -787,6 +811,22 @@
     margin-left: 2px;
   }
 
+  /* ════════════════════════════════════════════════════════════════════
+     🍯 HONEYPOT ANTI-SPAM
+     Campo invisible para humanos pero visible para bots.
+     Si un bot lo llena, el PHP bloquea el envío silenciosamente.
+     ════════════════════════════════════════════════════════════════════ */
+  .honeypot {
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    tab-index: -1;
+  }
+
   /* Estado de error en los campos */
   .field.has-error input,
   .field.has-error textarea,
@@ -806,23 +846,10 @@
   }
   .field.has-error .field-error { opacity: 1; }
 
-  /* Spinner del botón (cuando se está enviando el formulario) */
-  .btn-spinner {
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    border: 2px solid rgba(255,255,255,0.3);
-    border-top-color: var(--paper);
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-  }
   .btn[disabled] {
     opacity: 0.7;
     cursor: not-allowed;
     pointer-events: none;
-  }
-  @keyframes spin {
-    to { transform: rotate(360deg); }
   }
 
   .file-field {
@@ -1526,7 +1553,7 @@
 <nav class="nav">
   <div class="nav-inner">
     <a href="#top" class="nav-logo" aria-label="Contratamos Complementos — Inicio">
-      <img src="logo.png" alt="Contratamos Complementos">
+      <img src="logo.png" alt="Contratamos Complementos" width="200" height="44">
     </a>
     <ul class="nav-links">
       <li><a href="#somos">Nosotros</a></li>
@@ -1822,6 +1849,10 @@
 
         <!-- data-kind="cotizacion" identifica este formulario en el JS -->
         <form class="form" data-kind="cotizacion" novalidate>
+          <!-- 🍯 Honeypot anti-spam: invisible para humanos, visible para bots -->
+          <div class="honeypot" aria-hidden="true">
+            <label>No llenar este campo: <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          </div>
           <div class="form-grid">
             <!-- Empresa: solo letras, números, espacios y signos básicos -->
             <div class="field">
@@ -1890,7 +1921,6 @@
             <p class="form-note">Al enviar, acepta ser contactado por nuestro equipo comercial. No compartimos su información con terceros.</p>
             <button type="submit" class="btn btn-primary">
               <span class="btn-text">Enviar solicitud</span>
-              <span class="btn-spinner" hidden></span>
               <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m0 0L8 2m5 5L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
           </div>
@@ -1911,6 +1941,10 @@
 
         <!-- data-kind="hoja-vida" identifica este formulario en el JS -->
         <form class="form" data-kind="hoja-vida" novalidate>
+          <!-- 🍯 Honeypot anti-spam: invisible para humanos, visible para bots -->
+          <div class="honeypot" aria-hidden="true">
+            <label>No llenar este campo: <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          </div>
           <div class="form-grid">
             <!-- Nombres: solo letras y espacios -->
             <div class="field">
@@ -1996,7 +2030,6 @@
             <p class="form-note">Sus datos se tratan según la Ley 1581 de 2012 y solo se usan para procesos de selección.</p>
             <button type="submit" class="btn btn-primary">
               <span class="btn-text">Enviar hoja de vida</span>
-              <span class="btn-spinner" hidden></span>
               <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m0 0L8 2m5 5L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
           </div>
@@ -2107,7 +2140,7 @@
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="logo-white.png" alt="Contratamos Complementos">
+        <img src="logo-white.png" alt="Contratamos Complementos" width="180" height="42" loading="lazy">
         <span>Agilidad sin errores.</span>
       </div>
       <div class="footer-legal">
@@ -2124,7 +2157,7 @@
 <aside class="mobile-menu" id="mobile-menu" aria-hidden="true" aria-label="Menú principal">
   <div class="mobile-menu-header">
     <a href="#top" class="nav-logo" aria-label="Inicio">
-      <img src="logo.png" alt="Contratamos Complementos">
+      <img src="logo.png" alt="Contratamos Complementos" width="200" height="44">
     </a>
     <button class="mobile-menu-close" type="button" aria-label="Cerrar menú"></button>
   </div>
@@ -2148,6 +2181,52 @@
     <a href="https://wa.me/573116449629" target="_blank" rel="noopener">WhatsApp · (+57) 311 644 9629</a>
   </div>
 </aside>
+
+<!-- =============================================================
+     🤖 CHATBOT "CARLA" — Asistente virtual
+     ─────────────────────────────────────────────────────────────
+     Botón flotante + ventana de chat con opciones múltiples.
+     El comportamiento se maneja en el script al final del archivo.
+     ⚠️ IMPORTANTE: este HTML DEBE estar antes del <script> para que
+     el JavaScript pueda encontrar los elementos al cargar la página.
+     ============================================================= -->
+
+<!-- Botón flotante (siempre visible abajo a la derecha) -->
+<button class="chatbot-fab" id="chatbot-fab" type="button" aria-label="Abrir asistente virtual" aria-expanded="false">
+  <!-- Ícono cuando está cerrado: chat -->
+  <svg class="chatbot-icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+  <!-- Ícono cuando está abierto: X -->
+  <svg class="chatbot-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+    <path d="M18 6L6 18M6 6l12 12"/>
+  </svg>
+</button>
+
+<!-- Ventana del chat -->
+<div class="chatbot-window" id="chatbot-window" role="dialog" aria-label="Asistente virtual Carla">
+  <!-- Header con avatar, nombre y estado -->
+  <header class="chatbot-header">
+    <div class="chatbot-avatar" aria-hidden="true">C</div>
+    <div class="chatbot-header-text">
+      <div class="chatbot-name"><em>Carla</em></div>
+      <div class="chatbot-status">En línea — Asistente virtual</div>
+    </div>
+    <button class="chatbot-minimize" id="chatbot-minimize" type="button" aria-label="Minimizar chat">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M5 12h14"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Cuerpo donde se renderizan los mensajes dinámicamente -->
+  <div class="chatbot-body" id="chatbot-body" aria-live="polite"></div>
+
+  <!-- Footer con créditos -->
+  <footer class="chatbot-footer">
+    <div class="chatbot-footer-text">Powered by <strong>Contratamos Complementos</strong></div>
+  </footer>
+</div>
 
 <script>
   /* ═══════════════════════════════════════════════════════════════════════
@@ -2514,15 +2593,11 @@
       formData.append('_kind', kind);                    // 'cotizacion' | 'hoja-vida'
       formData.append('_destino', correoDestino);        // correo a donde llega
 
-      // 4. Mostrar estado "enviando" en el botón
+      // 4. Mostrar estado "enviando" en el botón (solo cambia el texto, sin spinner)
       const submitBtn = form.querySelector('button[type="submit"]');
       const btnText = submitBtn.querySelector('.btn-text');
-      const btnSpinner = submitBtn.querySelector('.btn-spinner');
-      const btnArrow = submitBtn.querySelector('.btn-arrow');
       submitBtn.disabled = true;
       btnText.textContent = 'Enviando...';
-      btnSpinner.hidden = false;
-      btnArrow.style.display = 'none';
 
       // 5. Enviar al PHP en el servidor de Hostinger
       try {
@@ -2549,8 +2624,6 @@
         // Restaurar el botón a su estado normal
         submitBtn.disabled = false;
         btnText.textContent = kind === 'cotizacion' ? 'Enviar solicitud' : 'Enviar hoja de vida';
-        btnSpinner.hidden = true;
-        btnArrow.style.display = '';
       }
     });
   });
@@ -2692,279 +2765,238 @@
      Para AGREGAR una nueva opción al menú principal:
        1. Cree una función showXXXFlow() siguiendo el patrón de las existentes
        2. Agréguela al array de opciones en showMainMenu()
+
+     ⚠️ Este bloque está envuelto en su propio try/catch y se ejecuta
+     en DOMContentLoaded. Es independiente del resto del código —
+     si algo más falla en la página, el chatbot SIGUE funcionando.
      ═══════════════════════════════════════════════════════════════════ */
-  (function() {
-    const fab = document.getElementById('chatbot-fab');
-    const chatWindow = document.getElementById('chatbot-window');
-    const chatBody = document.getElementById('chatbot-body');
-    const minimizeBtn = document.getElementById('chatbot-minimize');
+  function initChatbot() {
+    try {
+      const fab = document.getElementById('chatbot-fab');
+      const chatWindow = document.getElementById('chatbot-window');
+      const chatBody = document.getElementById('chatbot-body');
+      const minimizeBtn = document.getElementById('chatbot-minimize');
 
-    if (!fab || !chatWindow || !chatBody) return;
+      // Verificación con mensajes claros si falta algún elemento
+      if (!fab) { console.warn('[Chatbot] No se encontró #chatbot-fab en el DOM'); return; }
+      if (!chatWindow) { console.warn('[Chatbot] No se encontró #chatbot-window en el DOM'); return; }
+      if (!chatBody) { console.warn('[Chatbot] No se encontró #chatbot-body en el DOM'); return; }
+      if (!minimizeBtn) { console.warn('[Chatbot] No se encontró #chatbot-minimize en el DOM'); return; }
 
-    // ─── Helpers para crear elementos del chat ───────────────────────
+      // Números de WhatsApp (con fallback por si CONFIG no está disponible)
+      const wa_comercial = (typeof CONFIG !== 'undefined' && CONFIG.whatsapp) ? CONFIG.whatsapp.comercial : '573116449629';
+      const wa_gh = (typeof CONFIG !== 'undefined' && CONFIG.whatsapp) ? CONFIG.whatsapp.gestionHumana : '573126711554';
+      const correo_cot = (typeof CONFIG !== 'undefined' && CONFIG.correos) ? CONFIG.correos.cotizacion : 'gerencia@contratamoscomplementos.com';
+      const correo_gh = (typeof CONFIG !== 'undefined' && CONFIG.correos) ? CONFIG.correos.hojaDeVida : 'gestionhumana@contratamoscomplementos.com';
 
-    // Agrega una burbuja de mensaje (sender: 'bot' o 'user')
-    function addBubble(text, sender = 'bot') {
-      const div = document.createElement('div');
-      div.className = `chat-bubble ${sender}`;
-      div.innerHTML = text;
-      chatBody.appendChild(div);
-      scrollToBottom();
-      return div;
-    }
+      // ─── Helpers para crear elementos del chat ───────────────────────
 
-    // Agrega un grupo de botones de opciones rápidas
-    function addOptions(options) {
-      const group = document.createElement('div');
-      group.className = 'chat-options';
-      options.forEach(opt => {
-        const btn = document.createElement('button');
-        btn.className = 'chat-option' + (opt.back ? ' chat-option-back' : '');
-        btn.innerHTML = `
-          ${opt.icon ? `<span class="chat-option-icon">${opt.icon}</span>` : ''}
-          <span>${opt.label}</span>
-        `;
-        btn.addEventListener('click', () => {
-          // Eco del usuario en burbuja del lado derecho
-          addBubble(opt.label, 'user');
-          // Quita las opciones para no poder re-clickear
-          group.remove();
-          // Ejecuta la acción asociada después de "escribiendo..."
-          showTyping(() => opt.action());
-        });
-        group.appendChild(btn);
-      });
-      chatBody.appendChild(group);
-      scrollToBottom();
-    }
-
-    // Indicador "escribiendo..." (simula que Carla piensa)
-    function showTyping(callback, delay = 600) {
-      const typing = document.createElement('div');
-      typing.className = 'chat-typing';
-      typing.innerHTML = '<span></span><span></span><span></span>';
-      chatBody.appendChild(typing);
-      scrollToBottom();
-      setTimeout(() => {
-        typing.remove();
-        callback();
-      }, delay);
-    }
-
-    function scrollToBottom() {
-      requestAnimationFrame(() => {
-        chatBody.scrollTop = chatBody.scrollHeight;
-      });
-    }
-
-    function closeChat() {
-      chatWindow.classList.remove('open');
-      fab.classList.remove('open');
-      fab.setAttribute('aria-expanded', 'false');
-    }
-
-    // Hace scroll a una sección y cierra el chat
-    function goToSection(sectionId) {
-      closeChat();
-      setTimeout(() => {
-        const target = document.getElementById(sectionId);
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
-      }, 300);
-    }
-
-    // ─── Iconos SVG para las opciones del menú ──────────────────────
-    const ICONS = {
-      cotizacion:  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
-      hojaVida:    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
-      servicios:   '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>',
-      ofertas:     '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
-      asesor:      '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
-      contacto:    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
-      whatsapp:    '<svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>',
-      back:        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>',
-    };
-
-    // ─── FLUJOS DE CONVERSACIÓN ─────────────────────────────────────
-
-    // Menú principal — primera pantalla del chat
-    function showMainMenu() {
-      addBubble(
-        '¡Hola! Soy <strong>Carla</strong>, su asistente virtual de Contratamos Complementos. ¿En qué puedo ayudarle hoy?'
-      );
-      addOptions([
-        { label: 'Solicitar una cotización',     icon: ICONS.cotizacion, action: () => goToSection('formularios') },
-        { label: 'Enviar mi hoja de vida',       icon: ICONS.hojaVida,   action: showHojaVidaFlow },
-        { label: 'Conocer los servicios',        icon: ICONS.servicios,  action: () => goToSection('servicios') },
-        { label: 'Ver ofertas laborales',        icon: ICONS.ofertas,    action: showOfertasFlow },
-        { label: 'Hablar con un asesor',         icon: ICONS.asesor,     action: showAsesorFlow },
-        { label: 'Información de contacto',      icon: ICONS.contacto,   action: showContactoFlow },
-      ]);
-    }
-
-    // Flujo: hoja de vida — formulario o WhatsApp
-    function showHojaVidaFlow() {
-      addBubble('¡Excelente! ¿Cómo prefiere enviarla?');
-      addOptions([
-        { label: 'Llenar el formulario aquí',
-          icon: ICONS.hojaVida,
-          action: () => {
-            goToSection('formularios');
-            // Activa el tab de hoja de vida después de scrollear
-            setTimeout(() => {
-              const tab = document.querySelector('.tab[data-target="panel-candidato"]');
-              if (tab) tab.click();
-            }, 600);
-          }
-        },
-        { label: 'Escribir por WhatsApp a Gestión Humana',
-          icon: ICONS.whatsapp,
-          action: () => openWhatsApp(WA_GH, 'Hola, quisiera enviar mi hoja de vida.')
-        },
-        { label: '← Volver al menú principal', icon: ICONS.back, back: true, action: showMainMenu },
-      ]);
-    }
-
-    // Flujo: ofertas laborales
-    function showOfertasFlow() {
-      addBubble('Perfecto. Tenemos varias ofertas activas — puede revisarlas en la sección de Noticias o aplicar directamente.');
-      addOptions([
-        { label: 'Ver ofertas activas',          icon: ICONS.ofertas,  action: () => {
-            goToSection('noticias');
-            // Aplica el filtro de "ofertas" después de scrollear
-            setTimeout(() => {
-              const filterBtn = document.querySelector('.news-filter[data-filter="oferta"]');
-              if (filterBtn) filterBtn.click();
-            }, 700);
-          }
-        },
-        { label: 'Enviar mi hoja de vida',       icon: ICONS.hojaVida, action: showHojaVidaFlow },
-        { label: '← Volver al menú principal',   icon: ICONS.back, back: true, action: showMainMenu },
-      ]);
-    }
-
-    // Flujo: hablar con asesor (selector de número WhatsApp)
-    function showAsesorFlow() {
-      addBubble('Por supuesto. ¿Con qué área desea comunicarse?');
-      addOptions([
-        { label: 'Comercial / Cotizaciones',
-          icon: ICONS.whatsapp,
-          action: () => openWhatsApp(WA_COMERCIAL, 'Hola, me gustaría recibir información sobre sus servicios.')
-        },
-        { label: 'Gestión Humana / Empleos',
-          icon: ICONS.whatsapp,
-          action: () => openWhatsApp(WA_GH, 'Hola, me comunico desde el sitio web sobre temas de empleo.')
-        },
-        { label: '← Volver al menú principal', icon: ICONS.back, back: true, action: showMainMenu },
-      ]);
-    }
-
-    // Flujo: información de contacto
-    function showContactoFlow() {
-      const tel1 = formatPhone(WA_COMERCIAL);
-      const tel2 = formatPhone(WA_GH);
-      addBubble(`
-        <strong>Nuestros canales de contacto:</strong><br><br>
-        📞 <strong>Comercial:</strong> ${tel1}<br>
-        📞 <strong>Gestión Humana:</strong> ${tel2}<br><br>
-        ✉️ ${CONFIG.correos.cotizacion}<br>
-        ✉️ ${CONFIG.correos.hojaDeVida}<br><br>
-        📍 Vereda Chaparral, Rionegro, Antioquia
-      `);
-      addOptions([
-        { label: 'Ir a la sección de contacto',  icon: ICONS.contacto, action: () => goToSection('contacto') },
-        { label: '← Volver al menú principal',   icon: ICONS.back, back: true, action: showMainMenu },
-      ]);
-    }
-
-    // Convierte '573116449629' en '(+57) 311 644 9629'
-    function formatPhone(num) {
-      if (num.length !== 12) return num;
-      return `(+${num.slice(0,2)}) ${num.slice(2,5)} ${num.slice(5,8)} ${num.slice(8)}`;
-    }
-
-    // Abre WhatsApp con un mensaje pre-cargado en una nueva pestaña
-    function openWhatsApp(numero, mensaje) {
-      addBubble('¡Listo! Le abro WhatsApp en una nueva pestaña.', 'bot');
-      setTimeout(() => {
-        window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
-      }, 600);
-      setTimeout(() => {
-        addOptions([
-          { label: '← Volver al menú principal', icon: ICONS.back, back: true, action: showMainMenu },
-        ]);
-      }, 1200);
-    }
-
-    // ─── EVENTOS ────────────────────────────────────────────────────
-
-    let chatInitialized = false;
-
-    // Click en el botón flotante: abre/cierra el chat
-    fab.addEventListener('click', () => {
-      const isOpen = chatWindow.classList.toggle('open');
-      fab.classList.toggle('open', isOpen);
-      fab.setAttribute('aria-expanded', String(isOpen));
-      // Inicializa el menú la primera vez que se abre
-      if (isOpen && !chatInitialized) {
-        chatInitialized = true;
-        setTimeout(showMainMenu, 300);
+      function addBubble(text, sender) {
+        sender = sender || 'bot';
+        const div = document.createElement('div');
+        div.className = 'chat-bubble ' + sender;
+        div.innerHTML = text;
+        chatBody.appendChild(div);
+        scrollToBottom();
+        return div;
       }
-    });
 
-    // Botón minimizar dentro del chat
-    minimizeBtn.addEventListener('click', closeChat);
+      function addOptions(options) {
+        const group = document.createElement('div');
+        group.className = 'chat-options';
+        options.forEach(function(opt) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'chat-option' + (opt.back ? ' chat-option-back' : '');
+          btn.innerHTML =
+            (opt.icon ? '<span class="chat-option-icon">' + opt.icon + '</span>' : '') +
+            '<span>' + opt.label + '</span>';
+          btn.addEventListener('click', function() {
+            addBubble(opt.label, 'user');
+            group.remove();
+            showTyping(function() { opt.action(); });
+          });
+          group.appendChild(btn);
+        });
+        chatBody.appendChild(group);
+        scrollToBottom();
+      }
 
-    // Cerrar con tecla ESC
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && chatWindow.classList.contains('open')) closeChat();
-    });
-  })();
+      function showTyping(callback, delay) {
+        delay = delay || 600;
+        const typing = document.createElement('div');
+        typing.className = 'chat-typing';
+        typing.innerHTML = '<span></span><span></span><span></span>';
+        chatBody.appendChild(typing);
+        scrollToBottom();
+        setTimeout(function() {
+          typing.remove();
+          callback();
+        }, delay);
+      }
+
+      function scrollToBottom() {
+        requestAnimationFrame(function() {
+          chatBody.scrollTop = chatBody.scrollHeight;
+        });
+      }
+
+      function closeChat() {
+        chatWindow.classList.remove('open');
+        fab.classList.remove('open');
+        fab.setAttribute('aria-expanded', 'false');
+      }
+
+      function goToSection(sectionId) {
+        closeChat();
+        setTimeout(function() {
+          const target = document.getElementById(sectionId);
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+      }
+
+      // ─── Iconos SVG ─────────────────────────────────────────────────
+      const ICONS = {
+        cotizacion:  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
+        hojaVida:    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
+        servicios:   '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>',
+        ofertas:     '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
+        asesor:      '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+        contacto:    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
+        whatsapp:    '<svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>',
+        back:        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>'
+      };
+
+      // ─── FLUJOS DE CONVERSACIÓN ─────────────────────────────────────
+
+      function showMainMenu() {
+        addBubble('¡Hola! Soy <strong>Carla</strong>, su asistente virtual de Contratamos Complementos. ¿En qué puedo ayudarle hoy?');
+        addOptions([
+          { label: 'Solicitar una cotización', icon: ICONS.cotizacion, action: function() { goToSection('formularios'); } },
+          { label: 'Enviar mi hoja de vida',   icon: ICONS.hojaVida,   action: showHojaVidaFlow },
+          { label: 'Conocer los servicios',    icon: ICONS.servicios,  action: function() { goToSection('servicios'); } },
+          { label: 'Ver ofertas laborales',    icon: ICONS.ofertas,    action: showOfertasFlow },
+          { label: 'Hablar con un asesor',     icon: ICONS.asesor,     action: showAsesorFlow },
+          { label: 'Información de contacto',  icon: ICONS.contacto,   action: showContactoFlow }
+        ]);
+      }
+
+      function showHojaVidaFlow() {
+        addBubble('¡Excelente! ¿Cómo prefiere enviarla?');
+        addOptions([
+          { label: 'Llenar el formulario aquí', icon: ICONS.hojaVida,
+            action: function() {
+              goToSection('formularios');
+              setTimeout(function() {
+                const tab = document.querySelector('.tab[data-target="panel-candidato"]');
+                if (tab) tab.click();
+              }, 600);
+            }
+          },
+          { label: 'Escribir por WhatsApp a Gestión Humana', icon: ICONS.whatsapp,
+            action: function() { openWhatsApp(wa_gh, 'Hola, quisiera enviar mi hoja de vida.'); }
+          },
+          { label: '← Volver al menú principal', icon: ICONS.back, back: true, action: showMainMenu }
+        ]);
+      }
+
+      function showOfertasFlow() {
+        addBubble('Perfecto. Tenemos varias ofertas activas — puede revisarlas en la sección de Noticias o aplicar directamente.');
+        addOptions([
+          { label: 'Ver ofertas activas', icon: ICONS.ofertas,
+            action: function() {
+              goToSection('noticias');
+              setTimeout(function() {
+                const filterBtn = document.querySelector('.news-filter[data-filter="oferta"]');
+                if (filterBtn) filterBtn.click();
+              }, 700);
+            }
+          },
+          { label: 'Enviar mi hoja de vida', icon: ICONS.hojaVida, action: showHojaVidaFlow },
+          { label: '← Volver al menú principal', icon: ICONS.back, back: true, action: showMainMenu }
+        ]);
+      }
+
+      function showAsesorFlow() {
+        addBubble('Por supuesto. ¿Con qué área desea comunicarse?');
+        addOptions([
+          { label: 'Comercial / Cotizaciones', icon: ICONS.whatsapp,
+            action: function() { openWhatsApp(wa_comercial, 'Hola, me gustaría recibir información sobre sus servicios.'); }
+          },
+          { label: 'Gestión Humana / Empleos', icon: ICONS.whatsapp,
+            action: function() { openWhatsApp(wa_gh, 'Hola, me comunico desde el sitio web sobre temas de empleo.'); }
+          },
+          { label: '← Volver al menú principal', icon: ICONS.back, back: true, action: showMainMenu }
+        ]);
+      }
+
+      function showContactoFlow() {
+        const tel1 = formatPhone(wa_comercial);
+        const tel2 = formatPhone(wa_gh);
+        addBubble(
+          '<strong>Nuestros canales de contacto:</strong><br><br>' +
+          '📞 <strong>Comercial:</strong> ' + tel1 + '<br>' +
+          '📞 <strong>Gestión Humana:</strong> ' + tel2 + '<br><br>' +
+          '✉️ ' + correo_cot + '<br>' +
+          '✉️ ' + correo_gh + '<br><br>' +
+          '📍 Vereda Chaparral, Rionegro, Antioquia'
+        );
+        addOptions([
+          { label: 'Ir a la sección de contacto', icon: ICONS.contacto, action: function() { goToSection('contacto'); } },
+          { label: '← Volver al menú principal',  icon: ICONS.back, back: true, action: showMainMenu }
+        ]);
+      }
+
+      function formatPhone(num) {
+        if (!num || num.length !== 12) return num || '';
+        return '(+' + num.slice(0,2) + ') ' + num.slice(2,5) + ' ' + num.slice(5,8) + ' ' + num.slice(8);
+      }
+
+      function openWhatsApp(numero, mensaje) {
+        addBubble('¡Listo! Le abro WhatsApp en una nueva pestaña.', 'bot');
+        setTimeout(function() {
+          window.open('https://wa.me/' + numero + '?text=' + encodeURIComponent(mensaje), '_blank');
+        }, 600);
+        setTimeout(function() {
+          addOptions([
+            { label: '← Volver al menú principal', icon: ICONS.back, back: true, action: showMainMenu }
+          ]);
+        }, 1200);
+      }
+
+      // ─── EVENTOS ────────────────────────────────────────────────────
+
+      let chatInitialized = false;
+
+      fab.addEventListener('click', function() {
+        const isOpen = chatWindow.classList.toggle('open');
+        fab.classList.toggle('open', isOpen);
+        fab.setAttribute('aria-expanded', String(isOpen));
+        if (isOpen && !chatInitialized) {
+          chatInitialized = true;
+          setTimeout(showMainMenu, 300);
+        }
+      });
+
+      minimizeBtn.addEventListener('click', closeChat);
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && chatWindow.classList.contains('open')) closeChat();
+      });
+
+      console.log('[Chatbot] Carla inicializada correctamente ✓');
+    } catch (err) {
+      console.error('[Chatbot] Error al inicializar:', err);
+    }
+  }
+
+  // Iniciar el chatbot cuando el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initChatbot);
+  } else {
+    initChatbot();
+  }
 </script>
-
-<!-- =============================================================
-     🤖 CHATBOT "CARLA" — Asistente virtual
-     ─────────────────────────────────────────────────────────────
-     Botón flotante + ventana de chat con opciones múltiples.
-     El comportamiento se maneja en el script al final del archivo.
-     ============================================================= -->
-
-<!-- Botón flotante (siempre visible abajo a la derecha) -->
-<button class="chatbot-fab" id="chatbot-fab" aria-label="Abrir asistente virtual" aria-expanded="false">
-  <!-- Ícono cuando está cerrado: chat -->
-  <svg class="chatbot-icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-  </svg>
-  <!-- Ícono cuando está abierto: X -->
-  <svg class="chatbot-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-    <path d="M18 6L6 18M6 6l12 12"/>
-  </svg>
-</button>
-
-<!-- Ventana del chat -->
-<div class="chatbot-window" id="chatbot-window" role="dialog" aria-label="Asistente virtual Carla">
-
-  <!-- Header con avatar, nombre y estado -->
-  <header class="chatbot-header">
-    <div class="chatbot-avatar" aria-hidden="true">C</div>
-    <div class="chatbot-header-text">
-      <div class="chatbot-name"><em>Carla</em></div>
-      <div class="chatbot-status">En línea — Asistente virtual</div>
-    </div>
-    <button class="chatbot-minimize" id="chatbot-minimize" aria-label="Minimizar chat">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <path d="M5 12h14"/>
-      </svg>
-    </button>
-  </header>
-
-  <!-- Cuerpo donde se renderizan los mensajes dinámicamente -->
-  <div class="chatbot-body" id="chatbot-body" aria-live="polite"></div>
-
-  <!-- Footer con créditos -->
-  <footer class="chatbot-footer">
-    <div class="chatbot-footer-text">Powered by <strong>Contratamos Complementos</strong></div>
-  </footer>
-</div>
 
 </body>
 </html>

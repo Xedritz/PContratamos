@@ -51,6 +51,20 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+// ════════════════════════════════════════════════════════════════════
+// 🍯 HONEYPOT — Detección anti-spam
+// ════════════════════════════════════════════════════════════════════
+// El campo 'website' es invisible para humanos (oculto por CSS).
+// Si llega lleno, es un bot. Respondemos "success" para no alertarlo
+// pero no enviamos el correo. Así el bot piensa que funcionó y no
+// intenta de nuevo con otra técnica.
+if (!empty($_POST['website'])) {
+    // Log opcional (descomente si quiere registrar intentos de spam)
+    // error_log('Honeypot triggered: ' . print_r($_POST, true));
+    echo json_encode(['success' => true]);
+    exit;
+}
+
 // Función para responder en JSON y terminar
 function respond($success, $message = '') {
     echo json_encode([
