@@ -1,0 +1,2970 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Contratamos Complementos — Gestión estratégica de personal en misión. Agilidad sin errores.">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Contratamos Complementos — Gestión Estratégica de Personal en Misión</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    /* Brand palette — extracted from logo */
+    --ink:         #0E2233;    /* deep navy ink — text */
+    --navy:        #1D5B8B;    /* primary deep blue */
+    --blue:        #2F85C4;    /* mid blue */
+    --teal:        #2FA991;    /* brand teal */
+    --sage:        #6AB49A;    /* soft sage */
+    --cream:       #F6F3EC;    /* warm off-white */
+    --paper:       #FBF9F4;    /* paper */
+    --line:        #E3DED3;    /* hairline */
+    --muted:       #6B7A87;    /* muted text */
+    --white:       #FFFFFF;
+
+    --f-display: 'Fraunces', 'Times New Roman', serif;
+    --f-body: 'Manrope', 'Helvetica Neue', sans-serif;
+
+    --max-w: 1280px;
+    --pad: clamp(20px, 5vw, 80px);
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-weight: 400;
+    line-height: 1.6;
+    font-size: 16px;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Subtle paper grain */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.7;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+  img { max-width: 100%; display: block; }
+
+  .container {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding-left: var(--pad);
+    padding-right: var(--pad);
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ————————————————————— NAV ————————————————————— */
+  .nav {
+    position: sticky; top: 0;
+    background: rgba(251, 249, 244, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    z-index: 100;
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 78px;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; }
+  .nav-logo img { height: 44px; width: auto; }
+  .nav-links {
+    display: flex; gap: 38px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute; left: 0; bottom: -6px;
+    height: 1px; width: 0;
+    background: var(--teal);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--navy); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    font-family: var(--f-body);
+    font-size: 13px; font-weight: 600;
+    padding: 10px 20px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 100px;
+    transition: background 0.25s, transform 0.25s;
+    letter-spacing: 0.02em;
+  }
+  .nav-cta:hover { background: var(--navy); transform: translateY(-1px); }
+
+  .nav-toggle {
+    display: none;
+    width: 28px; height: 20px; position: relative;
+    z-index: 101;
+  }
+  .nav-toggle span {
+    position: absolute; left: 0; height: 1.5px; width: 100%;
+    background: var(--ink);
+    transition: transform 0.3s cubic-bezier(.2,.8,.2,1), opacity 0.2s, top 0.3s, bottom 0.3s;
+  }
+  .nav-toggle span:nth-child(1) { top: 2px; }
+  .nav-toggle span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+  .nav-toggle span:nth-child(3) { bottom: 2px; }
+
+  .nav-toggle.open span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) {
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+
+  /* Mobile CTA item inside menu — hidden on desktop */
+  .nav-links li.mobile-cta { display: none; }
+
+  /* ————————————————————— MOBILE MENU OVERLAY ————————————————————— */
+  .mobile-menu { display: none; }
+
+  @media (max-width: 860px) {
+    html.menu-open,
+    body.menu-open {
+      overflow: hidden !important;
+      height: 100% !important;
+      touch-action: none;
+    }
+
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .nav-toggle { display: block !important; }
+
+    /* Full-screen overlay */
+    .mobile-menu {
+      display: flex !important;
+      flex-direction: column;
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      background: var(--paper);
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translate3d(0, 0, 0);
+      -webkit-transform: translate3d(0, 0, 0);
+      transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+    }
+    .mobile-menu.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition: opacity 0.3s ease, visibility 0s linear 0s;
+    }
+
+    .mobile-menu-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 78px;
+      padding: 0 var(--pad);
+      border-bottom: 1px solid var(--line);
+      flex-shrink: 0;
+      background: var(--paper);
+    }
+    .mobile-menu-header img {
+      height: 44px;
+      width: auto;
+    }
+    .mobile-menu-close {
+      width: 28px; height: 28px;
+      position: relative;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      flex-shrink: 0;
+    }
+    .mobile-menu-close::before,
+    .mobile-menu-close::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 0; right: 0;
+      height: 1.5px;
+      background: var(--ink);
+    }
+    .mobile-menu-close::before { transform: rotate(45deg); }
+    .mobile-menu-close::after { transform: rotate(-45deg); }
+
+    .mobile-menu-body {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 20px var(--pad) 40px;
+      background: var(--paper);
+    }
+    .mobile-menu-body ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .mobile-menu-body li { width: 100%; }
+    .mobile-menu-body a {
+      display: block;
+      font-family: var(--f-display);
+      font-weight: 300;
+      font-size: 30px;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .mobile-menu-body li.mobile-menu-cta {
+      margin-top: 32px;
+    }
+    .mobile-menu-body li.mobile-menu-cta a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: var(--f-body);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 18px 28px;
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: 100px;
+      border-bottom: none;
+      width: 100%;
+    }
+    .mobile-menu-footer {
+      padding: 24px var(--pad) 32px;
+      border-top: 1px solid var(--line);
+      flex-shrink: 0;
+      background: var(--paper);
+    }
+    .mobile-menu-footer-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .mobile-menu-footer a {
+      font-family: var(--f-display);
+      font-size: 18px;
+      color: var(--ink);
+      text-decoration: none;
+      font-style: italic;
+    }
+  }
+
+  /* ————————————————————— HERO ————————————————————— */
+  .hero {
+    padding: clamp(70px, 10vw, 140px) 0 clamp(80px, 10vw, 130px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.75fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0; animation: fadeUp 0.8s ease 0.1s forwards;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 28px; height: 1px; background: var(--teal);
+  }
+
+  .hero h1 {
+    font-family: var(--f-display);
+    font-weight: 300;
+    font-size: clamp(42px, 6.2vw, 92px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    opacity: 0; animation: fadeUp 0.9s ease 0.25s forwards;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--navy);
+  }
+  .hero h1 .accent {
+    font-style: italic;
+    font-weight: 400;
+    background: linear-gradient(95deg, var(--navy) 20%, var(--teal) 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero-tagline {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 36px 0 44px;
+    line-height: 1.6;
+    opacity: 0; animation: fadeUp 0.9s ease 0.4s forwards;
+  }
+
+  .hero-actions {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.9s ease 0.55s forwards;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 28px;
+    border-radius: 100px;
+    font-size: 14px; font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: all 0.3s cubic-bezier(.2,.8,.2,1);
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .btn-primary:hover {
+    background: var(--navy);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -10px rgba(29,91,139,0.4);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+  .btn-outline:hover {
+    background: var(--ink);
+    color: var(--paper);
+    transform: translateY(-2px);
+  }
+  .btn-arrow { transition: transform 0.25s; }
+  .btn:hover .btn-arrow { transform: translateX(3px); }
+
+  /* Hero visual — abstract circular motif inspired by logo */
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    max-width: 440px;
+    margin-left: auto;
+    opacity: 0; animation: fadeUp 1s ease 0.6s forwards;
+  }
+
+  .hero-stats {
+    margin-top: 90px;
+    padding-top: 48px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    opacity: 0; animation: fadeUp 1s ease 0.8s forwards;
+  }
+  .stat-num {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(34px, 4vw, 54px);
+    color: var(--navy);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .stat-num em { font-style: italic; color: var(--teal); }
+  .stat-label {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 50px; }
+    .hero-visual { max-width: 320px; margin: 0 auto; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 60px; }
+  }
+
+  /* ————————————————————— SECTION HEADING ————————————————————— */
+  .section {
+    padding: clamp(80px, 10vw, 140px) 0;
+    position: relative;
+  }
+  .section-dark {
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .section-dark .section-kicker { color: var(--teal); }
+  .section-dark .section-kicker::before { background: var(--teal); }
+
+  .section-kicker {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 28px;
+  }
+  .section-kicker::before {
+    content: ''; width: 24px; height: 1px; background: var(--navy);
+  }
+
+  .section-title {
+    font-family: var(--f-display);
+    font-weight: 300;
+    font-size: clamp(32px, 4.8vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    max-width: 880px;
+  }
+  .section-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--teal);
+  }
+  .section-dark .section-title em { color: var(--sage); }
+
+  /* ————————————————————— QUIÉNES SOMOS ————————————————————— */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(50px, 7vw, 100px);
+    margin-top: 70px;
+    align-items: start;
+  }
+  .about-lead {
+    font-family: var(--f-display);
+    font-weight: 300;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .about-lead em { font-style: italic; color: var(--navy); }
+  .about-body {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+  .about-body p + p { margin-top: 18px; }
+  .about-body strong { color: var(--ink); font-weight: 600; }
+
+  .promise {
+    margin-top: 50px;
+    padding: clamp(34px, 4vw, 46px) clamp(32px, 4vw, 44px);
+    background: var(--cream);
+    border-left: 4px solid var(--teal);
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+  }
+  .promise::before {
+    content: '"';
+    position: absolute;
+    top: -20px; right: 20px;
+    font-family: var(--f-display);
+    font-style: italic;
+    font-size: 180px;
+    font-weight: 300;
+    color: var(--teal);
+    opacity: 0.08;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .promise-label {
+    font-size: 11px; letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .promise-text {
+    font-family: var(--f-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(34px, 4.6vw, 54px);
+    color: var(--ink);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    position: relative;
+  }
+  .promise-text .dot { color: var(--teal); }
+
+  @media (max-width: 860px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ————————————————————— MISIÓN / VISIÓN ————————————————————— */
+  .mv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 60px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .mv-card {
+    padding: clamp(36px, 5vw, 60px);
+    background: var(--ink);
+    position: relative;
+  }
+  .mv-num {
+    font-family: var(--f-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 15px;
+    color: var(--sage);
+    letter-spacing: 0.05em;
+    margin-bottom: 28px;
+  }
+  .mv-label {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(28px, 3.2vw, 42px);
+    color: var(--cream);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+  .mv-text {
+    color: rgba(246, 243, 236, 0.72);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  @media (max-width: 760px) {
+    .mv-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ————————————————————— SERVICIOS ————————————————————— */
+  .services-head {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    gap: 60px;
+    align-items: end;
+    margin-bottom: 70px;
+  }
+  .services-lead {
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 460px;
+  }
+  @media (max-width: 860px) {
+    .services-head { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .service-card {
+    background: var(--paper);
+    padding: clamp(32px, 4vw, 50px);
+    position: relative;
+    transition: background 0.4s;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-height: 280px;
+  }
+  .service-card:hover {
+    background: var(--cream);
+  }
+  .service-num {
+    font-family: var(--f-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 14px;
+    color: var(--teal);
+    letter-spacing: 0.08em;
+  }
+  .service-title {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .service-title em { font-style: italic; color: var(--navy); }
+  .service-desc {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.65;
+    margin-top: auto;
+  }
+  .service-icon {
+    position: absolute;
+    top: clamp(28px, 4vw, 44px);
+    right: clamp(28px, 4vw, 44px);
+    width: 32px; height: 32px;
+    color: var(--teal);
+    opacity: 0.85;
+  }
+
+  @media (max-width: 760px) {
+    .services-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ————————————————————— FORMULARIOS (TABS) ————————————————————— */
+  .forms-wrap {
+    margin-top: 60px;
+    background: var(--cream);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--line);
+  }
+  .tab {
+    padding: 28px 32px;
+    text-align: left;
+    font-family: var(--f-body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--paper);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .tab.active {
+    background: var(--cream);
+    color: var(--ink);
+  }
+  .tab.active::after {
+    content: '';
+    position: absolute;
+    left: 32px; right: 32px; bottom: -1px;
+    height: 2px;
+    background: var(--teal);
+  }
+  .tab-num {
+    font-family: var(--f-display);
+    font-style: italic;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--teal);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .tab:first-child { border-right: 1px solid var(--line); }
+
+  .form-panel {
+    display: none;
+    padding: clamp(36px, 5vw, 64px);
+  }
+  .form-panel.active { display: block; animation: fadeIn 0.4s ease; }
+
+  .form-head {
+    max-width: 640px;
+    margin-bottom: 44px;
+  }
+  .form-head h3 {
+    font-family: var(--f-display);
+    font-weight: 300;
+    font-size: clamp(28px, 3.2vw, 40px);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .form-head h3 em { font-style: italic; color: var(--navy); }
+  .form-head p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 28px;
+  }
+  .form-grid .full { grid-column: 1 / -1; }
+
+  .field { position: relative; }
+  .field label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .field input, .field textarea, .field select {
+    width: 100%;
+    padding: 14px 0;
+    border: none;
+    border-bottom: 1px solid var(--line);
+    background: transparent;
+    font-family: var(--f-body);
+    font-size: 15px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.25s;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus {
+    border-bottom-color: var(--teal);
+  }
+  .field textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.6;
+  }
+  .field input::placeholder, .field textarea::placeholder {
+    color: #B0B5BB;
+  }
+  .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%236B7A87' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right center; padding-right: 24px; }
+
+  /* Asterisco para campos requeridos */
+  .required {
+    color: #c0392b;
+    font-weight: 600;
+    margin-left: 2px;
+  }
+
+  /* Estado de error en los campos */
+  .field.has-error input,
+  .field.has-error textarea,
+  .field.has-error select {
+    border-bottom-color: #c0392b !important;
+  }
+  .field-error {
+    display: block;
+    font-size: 11px;
+    color: #c0392b;
+    margin-top: 6px;
+    min-height: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .field.has-error .field-error { opacity: 1; }
+
+  /* Spinner del botón (cuando se está enviando el formulario) */
+  .btn-spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: var(--paper);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+  .btn[disabled] {
+    opacity: 0.7;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .file-field {
+    border: 1px dashed #C8C5BB;
+    padding: 22px 24px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.5);
+    display: flex; align-items: center; gap: 16px;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .file-field:hover { border-color: var(--teal); background: rgba(47,169,145,0.05); }
+  .file-field input { display: none; }
+  .file-field-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .file-field-text { flex: 1; }
+  .file-field-title { font-size: 14px; font-weight: 600; color: var(--ink); }
+  .file-field-hint { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .file-field-name { font-size: 12px; color: var(--teal); margin-top: 4px; font-weight: 500; display: none; }
+  .file-field.has-file .file-field-name { display: block; }
+
+  .form-footer {
+    margin-top: 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 20px; flex-wrap: wrap;
+  }
+  .form-note {
+    font-size: 12px;
+    color: var(--muted);
+    max-width: 360px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 760px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .tab { padding: 22px 20px; font-size: 11px; gap: 10px; }
+    .tab.active::after { left: 20px; right: 20px; }
+  }
+
+  /* ————————————————————— NOTICIAS / COMUNICADOS ————————————————————— */
+  .news-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: end;
+    margin-bottom: 56px;
+  }
+  .news-filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .news-filter {
+    padding: 10px 18px;
+    border-radius: 100px;
+    border: 1px solid var(--line);
+    background: transparent;
+    font-family: var(--f-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .news-filter:hover { color: var(--ink); border-color: var(--ink); }
+  .news-filter.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .news-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: clamp(28px, 3vw, 36px);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    transition: all 0.35s cubic-bezier(.2,.8,.2,1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+  }
+  .news-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--teal);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
+  }
+  .news-card:hover {
+    border-color: var(--ink);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -20px rgba(14, 34, 51, 0.15);
+  }
+  .news-card:hover::before { transform: scaleX(1); }
+
+  .news-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .news-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .news-tag.type-oferta {
+    background: rgba(47, 169, 145, 0.14);
+    color: #1A6E5E;
+  }
+  .news-tag.type-oferta::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
+  .news-tag.type-noticia {
+    background: rgba(29, 91, 139, 0.12);
+    color: var(--navy);
+  }
+  .news-tag.type-noticia::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--navy); }
+  .news-tag.type-comunicado {
+    background: rgba(14, 34, 51, 0.08);
+    color: var(--ink);
+  }
+  .news-tag.type-comunicado::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--ink); }
+
+  .news-date {
+    font-family: var(--f-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .news-title {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(19px, 1.8vw, 22px);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .news-excerpt {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+    flex: 1;
+  }
+  .news-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .news-meta-item { display: flex; align-items: center; gap: 6px; }
+  .news-link {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    transition: gap 0.25s;
+  }
+  .news-card:hover .news-link { gap: 10px; }
+
+  .news-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
+    font-style: italic;
+    font-family: var(--f-display);
+    font-size: 18px;
+  }
+
+  @media (max-width: 900px) {
+    .news-grid { grid-template-columns: repeat(2, 1fr); }
+    .news-head { grid-template-columns: 1fr; gap: 24px; align-items: start; }
+  }
+  @media (max-width: 620px) {
+    .news-grid { grid-template-columns: 1fr; }
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 70px;
+    align-items: start;
+  }
+  .contact-block { }
+  .contact-block + .contact-block { }
+
+  .contact-label {
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .contact-value {
+    font-family: var(--f-display);
+    font-weight: 300;
+    font-size: clamp(22px, 2.4vw, 30px);
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    line-height: 1.25;
+  }
+  .contact-value a { transition: color 0.25s; }
+  .contact-value a:hover { color: var(--sage); }
+
+  .contact-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin: 30px 0;
+  }
+
+  .social-row { display: flex; gap: 14px; margin-top: 8px; }
+  .social-link {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--cream);
+    transition: all 0.3s;
+  }
+  .social-link:hover {
+    border-color: var(--teal);
+    background: var(--teal);
+    color: var(--ink);
+    transform: translateY(-2px);
+  }
+
+  .whatsapp-card {
+    background: var(--teal);
+    border-radius: 6px;
+    padding: clamp(30px, 4vw, 44px);
+    color: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+  .whatsapp-card::before {
+    content: '';
+    position: absolute;
+    top: -40%; right: -20%;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    pointer-events: none;
+  }
+  .whatsapp-card h4 {
+    font-family: var(--f-display);
+    font-weight: 300;
+    font-size: clamp(26px, 3vw, 36px);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .whatsapp-card h4 em { font-style: italic; }
+  .whatsapp-card p {
+    font-size: 15px;
+    opacity: 0.85;
+    margin-bottom: 28px;
+    line-height: 1.6;
+    max-width: 400px;
+    position: relative;
+  }
+  .whatsapp-btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 16px 26px;
+    border-radius: 100px;
+    font-size: 14px; font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .whatsapp-btn:hover { background: var(--cream); color: var(--ink); transform: translateY(-2px); }
+
+  @media (max-width: 860px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+  }
+
+  /* ————————————————————— FOOTER ————————————————————— */
+  .footer {
+    padding: 60px 0 36px;
+    background: var(--ink);
+    color: var(--cream);
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .footer-brand { display: flex; align-items: center; gap: 16px; }
+  .footer-brand img { height: 42px; width: auto; }
+  .footer-brand span {
+    font-family: var(--f-display);
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(246, 243, 236, 0.6);
+  }
+  .footer-legal {
+    font-size: 12px;
+    color: rgba(246, 243, 236, 0.5);
+    letter-spacing: 0.02em;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     🤖 CHATBOT "CARLA" — Asistente virtual flotante
+     ───────────────────────────────────────────────────────────────────
+     z-index: 9998 (sobre todo, excepto el menú móvil que es 9999)
+     Posición fija abajo a la derecha
+     ═══════════════════════════════════════════════════════════════════ */
+
+  /* Botón flotante (FAB) — siempre visible */
+  .chatbot-fab {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 9998;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 14px 32px rgba(14, 34, 51, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s, background 0.3s;
+  }
+  .chatbot-fab:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(14, 34, 51, 0.45);
+    background: var(--navy);
+  }
+  /* Indicador pulsante para llamar la atención */
+  .chatbot-fab::after {
+    content: '';
+    position: absolute;
+    top: 6px; right: 6px;
+    width: 14px; height: 14px;
+    background: var(--teal);
+    border-radius: 50%;
+    border: 2px solid var(--paper);
+    animation: chatPulse 2s ease-out infinite;
+  }
+  .chatbot-fab.open::after { display: none; }
+  @keyframes chatPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(47, 169, 145, 0.6); }
+    50%      { box-shadow: 0 0 0 8px rgba(47, 169, 145, 0); }
+  }
+  .chatbot-fab.open .chatbot-icon-open { display: none; }
+  .chatbot-fab.open .chatbot-icon-close { display: block; }
+  .chatbot-fab .chatbot-icon-close { display: none; }
+
+  /* Ventana del chat */
+  .chatbot-window {
+    position: fixed;
+    right: 24px;
+    bottom: 100px;
+    z-index: 9998;
+    width: 380px;
+    max-width: calc(100vw - 32px);
+    height: 580px;
+    max-height: calc(100vh - 130px);
+    max-height: calc(100dvh - 130px);
+    background: var(--paper);
+    border-radius: 16px;
+    box-shadow: 0 30px 60px -15px rgba(14, 34, 51, 0.3), 0 0 0 1px var(--line);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.95);
+    transform-origin: bottom right;
+    pointer-events: none;
+    transition: opacity 0.3s, visibility 0s linear 0.3s, transform 0.3s cubic-bezier(.2,.8,.2,1);
+    overflow: hidden;
+  }
+  .chatbot-window.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+    transition: opacity 0.3s, visibility 0s linear 0s, transform 0.3s cubic-bezier(.2,.8,.2,1);
+  }
+
+  /* Header del chat */
+  .chatbot-header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .chatbot-header::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -20%;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(47, 169, 145, 0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .chatbot-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal) 0%, var(--sage) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--f-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--ink);
+    flex-shrink: 0;
+    position: relative;
+  }
+  .chatbot-avatar::after {
+    content: '';
+    position: absolute;
+    bottom: 1px; right: 1px;
+    width: 11px; height: 11px;
+    background: #4ADE80;
+    border-radius: 50%;
+    border: 2px solid var(--ink);
+  }
+  .chatbot-header-text {
+    flex: 1;
+    position: relative;
+  }
+  .chatbot-name {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .chatbot-name em { font-style: italic; }
+  .chatbot-status {
+    font-size: 11px;
+    color: rgba(246, 243, 236, 0.7);
+    margin-top: 2px;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .chatbot-status::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: #4ADE80;
+    border-radius: 50%;
+  }
+  .chatbot-minimize {
+    background: none;
+    border: none;
+    color: rgba(246, 243, 236, 0.7);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.2s, color 0.2s;
+    position: relative;
+  }
+  .chatbot-minimize:hover {
+    background: rgba(255,255,255,0.1);
+    color: var(--paper);
+  }
+
+  /* Cuerpo del chat (mensajes) */
+  .chatbot-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    -webkit-overflow-scrolling: touch;
+    background: var(--paper);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Burbujas de mensaje */
+  .chat-bubble {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    animation: bubbleIn 0.3s ease;
+  }
+  @keyframes bubbleIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .chat-bubble.bot {
+    align-self: flex-start;
+    background: var(--cream);
+    color: var(--ink);
+    border-bottom-left-radius: 4px;
+  }
+  .chat-bubble.user {
+    align-self: flex-end;
+    background: var(--ink);
+    color: var(--paper);
+    border-bottom-right-radius: 4px;
+  }
+  .chat-bubble strong { font-weight: 600; }
+
+  /* Botones de opciones rápidas (chips) */
+  .chat-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    animation: bubbleIn 0.4s ease;
+  }
+  .chat-option {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 10px 16px;
+    font-family: var(--f-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .chat-option:hover {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+    transform: translateX(2px);
+  }
+  .chat-option-icon {
+    width: 20px; height: 20px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .chat-option-back {
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .chat-option-back:hover {
+    background: var(--cream);
+    color: var(--ink);
+    border-color: var(--cream);
+  }
+
+  /* Footer del chat */
+  .chatbot-footer {
+    border-top: 1px solid var(--line);
+    padding: 12px 20px;
+    background: var(--paper);
+    flex-shrink: 0;
+    text-align: center;
+  }
+  .chatbot-footer-text {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  .chatbot-footer-text strong { color: var(--ink); font-weight: 600; }
+
+  /* Indicador "escribiendo..." */
+  .chat-typing {
+    align-self: flex-start;
+    background: var(--cream);
+    padding: 14px 16px;
+    border-radius: 16px;
+    border-bottom-left-radius: 4px;
+    display: flex;
+    gap: 4px;
+  }
+  .chat-typing span {
+    width: 6px; height: 6px;
+    background: var(--muted);
+    border-radius: 50%;
+    animation: typing 1.4s infinite;
+  }
+  .chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+  .chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typing {
+    0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+    30% { opacity: 1; transform: translateY(-3px); }
+  }
+
+  /* Responsive — pantallas pequeñas */
+  @media (max-width: 480px) {
+    .chatbot-window {
+      right: 12px;
+      left: 12px;
+      bottom: 88px;
+      width: auto;
+      max-width: none;
+      height: calc(100dvh - 110px);
+    }
+    .chatbot-fab {
+      right: 16px;
+      bottom: 16px;
+      width: 56px;
+      height: 56px;
+    }
+  }
+
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes pulseRing {
+    0% { transform: scale(1); opacity: 0.7; }
+    80%, 100% { transform: scale(1.6); opacity: 0; }
+  }
+  @keyframes orbit {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes orbitReverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+  }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.9s ease, transform 0.9s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* Success message */
+  .toast {
+    position: fixed;
+    left: 50%; transform: translateX(-50%) translateY(80px);
+    bottom: 30px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 16px 28px;
+    border-radius: 100px;
+    font-size: 14px; font-weight: 500;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.4s cubic-bezier(.2,.8,.2,1);
+    z-index: 200;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+</style>
+</head>
+<body>
+
+<!-- ============= NAV ============= -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo" aria-label="Contratamos Complementos — Inicio">
+      <img src="logo.png" alt="Contratamos Complementos">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#somos">Nosotros</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#noticias">Noticias</a></li>
+      <li><a href="#formularios">Trabaja / Cotiza</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#formularios" class="nav-cta">Solicitar cotización</a>
+    <button class="nav-toggle" aria-label="Menú" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============= HERO ============= -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">Gestión Estratégica de Personal en Misión</div>
+        <h1>
+          El talento que<br>
+          <em>sostiene</em> su<br>
+          <span class="accent">operación.</span>
+        </h1>
+        <p class="hero-tagline">
+          Conectamos el mejor talento operativo con las necesidades críticas de su empresa. Administramos personal con rigurosidad técnica y legal, para que su única preocupación sea crecer.
+        </p>
+        <div class="hero-actions">
+          <a href="#formularios" class="btn btn-primary">
+            Solicitar cotización
+            <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m0 0L8 2m5 5L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#servicios" class="btn btn-outline">Conocer servicios</a>
+        </div>
+      </div>
+
+      <!-- Abstract visual — circular composition inspired by the four-figures logo -->
+      <div class="hero-visual">
+        <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%;">
+          <defs>
+            <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1D5B8B"/>
+              <stop offset="100%" stop-color="#2F85C4"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#2FA991"/>
+              <stop offset="100%" stop-color="#6AB49A"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Outer ring guides -->
+          <circle cx="240" cy="240" r="220" fill="none" stroke="#D9D3C5" stroke-width="1"/>
+          <circle cx="240" cy="240" r="170" fill="none" stroke="#D9D3C5" stroke-width="1" stroke-dasharray="2 6"/>
+
+          <!-- Connecting lines from center to each orb -->
+          <g stroke="#D9D3C5" stroke-width="1">
+            <line x1="240" y1="240" x2="130" y2="130"/>
+            <line x1="240" y1="240" x2="350" y2="130"/>
+            <line x1="240" y1="240" x2="130" y2="350"/>
+            <line x1="240" y1="240" x2="350" y2="350"/>
+          </g>
+
+          <!-- Center element -->
+          <circle cx="240" cy="240" r="46" fill="#FBF9F4" stroke="#1D5B8B" stroke-width="1.5"/>
+          <text x="240" y="248" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="20" font-weight="400" fill="#1D5B8B">ustedes</text>
+
+          <!-- Top-left orb (dark blue) — SELECCIÓN -->
+          <g transform="translate(130 130)">
+            <circle r="50" fill="url(#g1)"/>
+            <circle r="18" cx="0" cy="-6" fill="#FBF9F4" opacity="0.28"/>
+          </g>
+          <text x="130" y="60" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="700" letter-spacing="2.5" fill="#0E2233">SELECCIÓN</text>
+
+          <!-- Top-right orb (mid blue) — NÓMINA -->
+          <g transform="translate(350 130)">
+            <circle r="50" fill="#2F85C4"/>
+            <circle r="18" cx="0" cy="-6" fill="#FBF9F4" opacity="0.28"/>
+          </g>
+          <text x="350" y="60" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="700" letter-spacing="2.5" fill="#0E2233">NÓMINA</text>
+
+          <!-- Bottom-left orb (teal) — CUMPLIMIENTO -->
+          <g transform="translate(130 350)">
+            <circle r="50" fill="url(#g2)"/>
+            <circle r="18" cx="0" cy="-6" fill="#FBF9F4" opacity="0.3"/>
+          </g>
+          <text x="130" y="425" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="700" letter-spacing="2.5" fill="#0E2233">CUMPLIMIENTO</text>
+
+          <!-- Bottom-right orb (sage) — FLEXIBILIDAD -->
+          <g transform="translate(350 350)">
+            <circle r="50" fill="#6AB49A"/>
+            <circle r="18" cx="0" cy="-6" fill="#FBF9F4" opacity="0.3"/>
+          </g>
+          <text x="350" y="425" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="700" letter-spacing="2.5" fill="#0E2233">FLEXIBILIDAD</text>
+
+          <!-- Small decorative dots on outer ring -->
+          <circle cx="240" cy="20" r="3" fill="#2FA991"/>
+          <circle cx="460" cy="240" r="3" fill="#1D5B8B"/>
+          <circle cx="240" cy="460" r="3" fill="#6AB49A"/>
+          <circle cx="20" cy="240" r="3" fill="#2F85C4"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Stats strip -->
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">100<em>%</em></div>
+        <div class="stat-label">Cumplimiento<br>legal y normativo</div>
+      </div>
+      <div>
+        <div class="stat-num">24<em>h</em></div>
+        <div class="stat-label">Respuesta<br>a incidencias críticas</div>
+      </div>
+      <div>
+        <div class="stat-num">365</div>
+        <div class="stat-label">Días de continuidad<br>operacional garantizada</div>
+      </div>
+      <div>
+        <div class="stat-num">1<em>·</em>1</div>
+        <div class="stat-label">Atención directa<br>con su aliado en campo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= QUIÉNES SOMOS ============= -->
+<section class="section" id="somos">
+  <div class="container">
+    <div class="section-kicker">Quiénes Somos</div>
+    <h2 class="section-title reveal">
+      No somos un proveedor externo.<br>
+      Somos su <em>aliado estratégico en campo.</em>
+    </h2>
+
+    <div class="about-grid">
+      <div class="about-lead reveal">
+        Entendemos que el motor de su organización es el <em>talento operativo.</em> Una vacante sin cubrir o una gestión administrativa deficiente se traducen en sobrecostos y pérdida de competitividad.
+      </div>
+      <div class="about-body reveal">
+        <p>
+          Por eso no solo proveemos personal: nos convertimos en el <strong>guardián de su continuidad operativa</strong>, asumiendo la administración del talento con la rigurosidad técnica y legal que su empresa exige.
+        </p>
+        <p>
+          Miramos hacia el futuro con la convicción de que la tercerización debe ser transparente, humana y eficiente. Trabajamos día a día para dignificar el trabajo operativo y optimizar la rentabilidad de nuestros clientes, construyendo relaciones de confianza basadas en resultados medibles.
+        </p>
+        <div class="promise">
+          <div class="promise-label">Nuestra promesa</div>
+          <div class="promise-text">Agilidad sin errores<span class="dot">.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= MISIÓN / VISIÓN ============= -->
+<section class="section section-dark" id="mision">
+  <div class="container">
+    <div class="section-kicker">Propósito</div>
+    <h2 class="section-title reveal">
+      Lo que nos mueve,<br>
+      <em>hacia dónde vamos.</em>
+    </h2>
+
+    <div class="mv-grid">
+      <div class="mv-card reveal">
+        <div class="mv-num">— 01 / Misión</div>
+        <div class="mv-label">Conectar talento, transformar operaciones.</div>
+        <p class="mv-text">
+          Conectar el mejor talento operativo con las necesidades críticas de nuestras empresas usuarias, transformando la administración de personal en una ventaja competitiva basada en la calidad del servicio, el desarrollo humano y la excelencia en la ejecución.
+        </p>
+      </div>
+      <div class="mv-card reveal">
+        <div class="mv-num">— 02 / Visión</div>
+        <div class="mv-label">El aliado indispensable de la industria.</div>
+        <p class="mv-text">
+          Consolidarnos como el aliado estratégico indispensable para la industria, reconocidos por nuestra capacidad única de respuesta y por elevar los estándares de productividad y bienestar laboral en el sector de la administración de personal en misión.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= SERVICIOS ============= -->
+<section class="section" id="servicios">
+  <div class="container">
+    <div class="services-head">
+      <div>
+        <div class="section-kicker">Qué hacemos</div>
+        <h2 class="section-title reveal">
+          Ciclo completo del<br>
+          <em>personal operativo.</em>
+        </h2>
+      </div>
+      <p class="services-lead reveal">
+        Optimizamos su operación proporcionando el talento humano calificado que su negocio necesita, justo cuando lo necesita. Nos encargamos de todo el ciclo de vida del personal operativo —con continuidad y cumplimiento normativo total.
+      </p>
+    </div>
+
+    <div class="services-grid reveal">
+
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="16" cy="12" r="5"/>
+          <path d="M6 27c1-5 5-8 10-8s9 3 10 8"/>
+          <path d="M22 5l2 2 4-4"/>
+        </svg>
+        <div class="service-num">— 01</div>
+        <div class="service-title">Reclutamiento y <em>Selección</em></div>
+        <p class="service-desc">
+          Identificamos y atraemos perfiles operativos alineados a la cultura y los estándares de su compañía. Procesos de selección acelerados con control de blindaje total.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="5" y="8" width="22" height="17" rx="2"/>
+          <path d="M5 13h22"/>
+          <path d="M10 4v6M22 4v6"/>
+          <circle cx="11" cy="19" r="0.8" fill="currentColor"/>
+          <path d="M14 19h7"/>
+        </svg>
+        <div class="service-num">— 02</div>
+        <div class="service-title">Contratación y <em>Nómina</em></div>
+        <p class="service-desc">
+          Gestión administrativa integral, pagos y seguridad social sin errores. Asumimos la carga operativa para que usted se concentre en su core de negocio.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M16 4l10 4v8c0 6-4 10-10 12-6-2-10-6-10-12V8l10-4z"/>
+          <path d="M11 16l3.5 3.5L21 13"/>
+        </svg>
+        <div class="service-num">— 03</div>
+        <div class="service-title">Cumplimiento <em>Legal</em></div>
+        <p class="service-desc">
+          Mitigamos riesgos laborales y aseguramos el cumplimiento de la legislación vigente. Su operación protegida bajo la normatividad colombiana.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M4 20l6-6 5 5 8-8 5 5"/>
+          <path d="M28 16v-6h-6"/>
+          <path d="M4 27h24"/>
+        </svg>
+        <div class="service-num">— 04</div>
+        <div class="service-title">Flexibilidad <em>operativa</em></div>
+        <p class="service-desc">
+          Adaptamos el tamaño de su equipo según los picos de demanda de su operación. Escalabilidad real, sin fricción ni sobrecostos ocultos.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============= FORMULARIOS ============= -->
+<section class="section" id="formularios" style="background: var(--cream);">
+  <div class="container">
+    <div class="section-kicker">Siguiente paso</div>
+    <h2 class="section-title reveal">
+      ¿Busca talento o <em>busca oportunidad?</em>
+    </h2>
+    <p class="services-lead reveal" style="margin-top: 24px;">
+      Dos caminos, una misma promesa: agilidad sin errores. Envíenos su solicitud y le contactaremos en menos de 24 horas hábiles.
+    </p>
+
+    <div class="forms-wrap reveal">
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-target="panel-cliente" role="tab" aria-selected="true">
+          <span class="tab-num">01</span>
+          <span>Soy empresa · Cotización</span>
+        </button>
+        <button class="tab" data-target="panel-candidato" role="tab" aria-selected="false">
+          <span class="tab-num">02</span>
+          <span>Soy candidato · Hoja de vida</span>
+        </button>
+      </div>
+
+      <!-- =============================================================
+           PANEL CLIENTE — FORMULARIO DE COTIZACIÓN
+           Este formulario envía a: CONFIG.correos.cotizacion
+           (por defecto: gerencia@contratamoscomplementos.com)
+           ============================================================= -->
+      <div class="form-panel active" id="panel-cliente" role="tabpanel">
+        <div class="form-head">
+          <h3>Cuéntenos sobre su <em>necesidad operativa.</em></h3>
+          <p>Complete los datos y recibirá una propuesta personalizada con los perfiles, tiempos y condiciones que mejor se ajusten a su operación.</p>
+        </div>
+
+        <!-- data-kind="cotizacion" identifica este formulario en el JS -->
+        <form class="form" data-kind="cotizacion" novalidate>
+          <div class="form-grid">
+            <!-- Empresa: solo letras, números, espacios y signos básicos -->
+            <div class="field">
+              <label for="c-empresa">Empresa <span class="required">*</span></label>
+              <input id="c-empresa" type="text" name="empresa" placeholder="Razón social" minlength="2" maxlength="100" required>
+              <span class="field-error"></span>
+            </div>
+            <!-- NIT: solo números y guiones (formato colombiano) -->
+            <div class="field">
+              <label for="c-nit">NIT</label>
+              <input id="c-nit" type="text" name="nit" placeholder="000000000-0" pattern="[0-9\-\.]{6,15}" inputmode="numeric" maxlength="15">
+              <span class="field-error"></span>
+            </div>
+            <!-- Nombre de contacto: solo letras y espacios -->
+            <div class="field">
+              <label for="c-contacto">Nombre de contacto <span class="required">*</span></label>
+              <input id="c-contacto" type="text" name="contacto" placeholder="Nombre completo" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,80}" minlength="2" maxlength="80" required>
+              <span class="field-error"></span>
+            </div>
+            <div class="field">
+              <label for="c-cargo">Cargo</label>
+              <input id="c-cargo" type="text" name="cargo" placeholder="Gerente, Jefe de RRHH…" maxlength="60">
+              <span class="field-error"></span>
+            </div>
+            <!-- Email: validación HTML5 nativa con type="email" -->
+            <div class="field">
+              <label for="c-email">Correo corporativo <span class="required">*</span></label>
+              <input id="c-email" type="email" name="email" placeholder="correo@empresa.com" maxlength="100" required>
+              <span class="field-error"></span>
+            </div>
+            <!-- Teléfono: solo números, +, espacios, paréntesis y guiones -->
+            <div class="field">
+              <label for="c-tel">Teléfono <span class="required">*</span></label>
+              <input id="c-tel" type="tel" name="telefono" placeholder="+57 ..." pattern="[\+]?[0-9\s\-\(\)]{7,20}" inputmode="tel" maxlength="20" required>
+              <span class="field-error"></span>
+            </div>
+            <div class="field">
+              <label for="c-sector">Sector / industria</label>
+              <input id="c-sector" type="text" name="sector" placeholder="Manufactura, logística, agro…" maxlength="60">
+              <span class="field-error"></span>
+            </div>
+            <div class="field">
+              <label for="c-num">Número de personal requerido</label>
+              <select id="c-num" name="numero">
+                <option value="">Seleccione un rango</option>
+                <option>1 a 10 personas</option>
+                <option>11 a 30 personas</option>
+                <option>31 a 100 personas</option>
+                <option>Más de 100 personas</option>
+              </select>
+              <span class="field-error"></span>
+            </div>
+            <div class="field full">
+              <label for="c-perfil">Perfil operativo requerido</label>
+              <input id="c-perfil" type="text" name="perfil" placeholder="Operarios, auxiliares, técnicos, conductores…" maxlength="200">
+              <span class="field-error"></span>
+            </div>
+            <div class="field full">
+              <label for="c-detalle">Detalle de la necesidad</label>
+              <textarea id="c-detalle" name="detalle" placeholder="Contexto de la operación, tiempo estimado, turnos, ubicación, etc." rows="4" maxlength="2000"></textarea>
+              <span class="field-error"></span>
+            </div>
+          </div>
+
+          <div class="form-footer">
+            <p class="form-note">Al enviar, acepta ser contactado por nuestro equipo comercial. No compartimos su información con terceros.</p>
+            <button type="submit" class="btn btn-primary">
+              <span class="btn-text">Enviar solicitud</span>
+              <span class="btn-spinner" hidden></span>
+              <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m0 0L8 2m5 5L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- =============================================================
+           PANEL CANDIDATO — FORMULARIO DE HOJA DE VIDA
+           Este formulario envía a: CONFIG.correos.hojaDeVida
+           (por defecto: gestionhumana@contratamoscomplementos.com)
+           Soporta archivo adjunto (CV en PDF/Word)
+           ============================================================= -->
+      <div class="form-panel" id="panel-candidato" role="tabpanel">
+        <div class="form-head">
+          <h3>Haga parte de <em>nuestro talento.</em></h3>
+          <p>Envíenos su hoja de vida y los datos esenciales. Si su perfil coincide con una oportunidad activa, nos pondremos en contacto.</p>
+        </div>
+
+        <!-- data-kind="hoja-vida" identifica este formulario en el JS -->
+        <form class="form" data-kind="hoja-vida" novalidate>
+          <div class="form-grid">
+            <!-- Nombres: solo letras y espacios -->
+            <div class="field">
+              <label for="h-nombre">Nombres <span class="required">*</span></label>
+              <input id="h-nombre" type="text" name="nombre" placeholder="Nombres completos" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,50}" minlength="2" maxlength="50" required>
+              <span class="field-error"></span>
+            </div>
+            <div class="field">
+              <label for="h-apellido">Apellidos <span class="required">*</span></label>
+              <input id="h-apellido" type="text" name="apellido" placeholder="Apellidos" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,50}" minlength="2" maxlength="50" required>
+              <span class="field-error"></span>
+            </div>
+            <!-- Cédula: SOLO números (6 a 12 dígitos) -->
+            <div class="field">
+              <label for="h-doc">Cédula <span class="required">*</span></label>
+              <input id="h-doc" type="text" name="cedula" placeholder="Solo números" pattern="[0-9]{6,12}" inputmode="numeric" maxlength="12" required>
+              <span class="field-error"></span>
+            </div>
+            <!-- Edad: solo números entre 18 y 70 -->
+            <div class="field">
+              <label for="h-edad">Edad</label>
+              <input id="h-edad" type="number" name="edad" min="18" max="70" placeholder="18+" inputmode="numeric">
+              <span class="field-error"></span>
+            </div>
+            <!-- Email: validación HTML5 nativa -->
+            <div class="field">
+              <label for="h-email">Correo electrónico <span class="required">*</span></label>
+              <input id="h-email" type="email" name="email" placeholder="correo@ejemplo.com" maxlength="100" required>
+              <span class="field-error"></span>
+            </div>
+            <!-- Teléfono: solo números, +, espacios y guiones -->
+            <div class="field">
+              <label for="h-tel">Teléfono / WhatsApp <span class="required">*</span></label>
+              <input id="h-tel" type="tel" name="telefono" placeholder="+57 ..." pattern="[\+]?[0-9\s\-\(\)]{7,20}" inputmode="tel" maxlength="20" required>
+              <span class="field-error"></span>
+            </div>
+            <div class="field">
+              <label for="h-ciudad">Ciudad de residencia</label>
+              <input id="h-ciudad" type="text" name="ciudad" placeholder="Ciudad" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,50}" maxlength="50">
+              <span class="field-error"></span>
+            </div>
+            <div class="field">
+              <label for="h-exp">Años de experiencia</label>
+              <select id="h-exp" name="experiencia">
+                <option value="">Seleccione</option>
+                <option>Sin experiencia</option>
+                <option>Menos de 1 año</option>
+                <option>1 a 3 años</option>
+                <option>3 a 5 años</option>
+                <option>Más de 5 años</option>
+              </select>
+              <span class="field-error"></span>
+            </div>
+            <div class="field full">
+              <label for="h-perfil">Cargo / área de interés</label>
+              <input id="h-perfil" type="text" name="perfil" placeholder="Operario, auxiliar, técnico, conductor…" maxlength="100">
+              <span class="field-error"></span>
+            </div>
+            <!-- Archivo: PDF o Word, máximo 5MB. Validación de tipo y tamaño en JS -->
+            <div class="field full">
+              <label>Hoja de vida (PDF o Word) <span class="required">*</span></label>
+              <label class="file-field" for="h-archivo" id="file-label">
+                <div class="file-field-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                </div>
+                <div class="file-field-text">
+                  <div class="file-field-title">Adjuntar archivo</div>
+                  <div class="file-field-hint">PDF, DOC o DOCX · Máx. 5 MB</div>
+                  <div class="file-field-name" id="file-name"></div>
+                </div>
+                <input id="h-archivo" type="file" name="hoja_vida" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>
+              </label>
+              <span class="field-error" id="file-error"></span>
+            </div>
+            <div class="field full">
+              <label for="h-nota">Mensaje (opcional)</label>
+              <textarea id="h-nota" name="nota" placeholder="Algo adicional que quiera que sepamos." rows="3" maxlength="1000"></textarea>
+              <span class="field-error"></span>
+            </div>
+          </div>
+
+          <div class="form-footer">
+            <p class="form-note">Sus datos se tratan según la Ley 1581 de 2012 y solo se usan para procesos de selección.</p>
+            <button type="submit" class="btn btn-primary">
+              <span class="btn-text">Enviar hoja de vida</span>
+              <span class="btn-spinner" hidden></span>
+              <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m0 0L8 2m5 5L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============= NOTICIAS / COMUNICADOS ============= -->
+<section class="section" id="noticias">
+  <div class="container">
+    <div class="news-head">
+      <div>
+        <div class="section-kicker">Novedades</div>
+        <h2 class="section-title reveal">
+          Noticias, comunicados<br>
+          y <em>ofertas laborales.</em>
+        </h2>
+      </div>
+      <div class="news-filters reveal" role="tablist">
+        <button class="news-filter active" data-filter="all">Todos</button>
+        <button class="news-filter" data-filter="oferta">Ofertas laborales</button>
+        <button class="news-filter" data-filter="noticia">Noticias</button>
+        <button class="news-filter" data-filter="comunicado">Comunicados</button>
+      </div>
+    </div>
+
+    <div class="news-grid reveal" id="news-grid">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ============= CONTACTO ============= -->
+<section class="section section-dark" id="contacto">
+  <div class="container">
+    <div class="section-kicker">Contacto</div>
+    <h2 class="section-title reveal">
+      Hablemos de<br>
+      <em>su operación.</em>
+    </h2>
+
+    <div class="contact-grid">
+      <div>
+        <div class="contact-block reveal">
+          <div class="contact-label">Correo</div>
+          <div class="contact-value">
+            <a href="mailto:gerencia@contratamoscomplementos.com">gerencia@contratamoscomplementos.com</a>
+          </div>
+        </div>
+
+        <hr class="contact-divider">
+
+        <div class="contact-block reveal">
+          <div class="contact-label">Teléfono</div>
+          <div class="contact-value">
+            <a href="tel:+573116449629">(+57) 311 644 9629</a>
+          </div>
+        </div>
+
+        <hr class="contact-divider">
+
+        <div class="contact-block reveal">
+          <div class="contact-label">Ubicación</div>
+          <div class="contact-value" style="font-size: 18px; line-height: 1.5;">
+            Vereda Chaparral, sector Las Partidas<br>
+            Rionegro, Antioquia · Colombia
+          </div>
+        </div>
+
+        <hr class="contact-divider">
+
+        <div class="contact-block reveal">
+          <div class="contact-label">Síganos</div>
+          <div class="social-row">
+            <a href="#" class="social-link" aria-label="LinkedIn" data-social="linkedin">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram" data-social="instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Facebook" data-social="facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://wa.me/573116449629" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="whatsapp-card reveal">
+        <h4>Atención <em>inmediata</em><br>por WhatsApp.</h4>
+        <p>¿Necesita una respuesta rápida? Escríbanos directamente a nuestro canal de atención y resolvemos su consulta al instante.</p>
+        <a href="https://wa.me/573116449629?text=Hola%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios" target="_blank" rel="noopener" class="whatsapp-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+          Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FOOTER ============= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo-white.png" alt="Contratamos Complementos">
+        <span>Agilidad sin errores.</span>
+      </div>
+      <div class="footer-legal">
+        © <span id="year"></span> Contratamos Complementos S.A.S. — NIT 901.619.504-7 · Rionegro, Colombia.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast (mensaje de confirmación al enviar formularios) -->
+<div class="toast" id="toast">Gracias. Su solicitud fue enviada.</div>
+
+<!-- ============= MOBILE MENU OVERLAY (full-screen) ============= -->
+<aside class="mobile-menu" id="mobile-menu" aria-hidden="true" aria-label="Menú principal">
+  <div class="mobile-menu-header">
+    <a href="#top" class="nav-logo" aria-label="Inicio">
+      <img src="logo.png" alt="Contratamos Complementos">
+    </a>
+    <button class="mobile-menu-close" type="button" aria-label="Cerrar menú"></button>
+  </div>
+  <div class="mobile-menu-body">
+    <ul>
+      <li><a href="#somos">Nosotros</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#noticias">Noticias</a></li>
+      <li><a href="#formularios">Trabaja / Cotiza</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li class="mobile-menu-cta">
+        <a href="#formularios">
+          Solicitar cotización
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m0 0L8 2m5 5L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="mobile-menu-footer">
+    <div class="mobile-menu-footer-label">Contacto directo</div>
+    <a href="https://wa.me/573116449629" target="_blank" rel="noopener">WhatsApp · (+57) 311 644 9629</a>
+  </div>
+</aside>
+
+<script>
+  /* ═══════════════════════════════════════════════════════════════════════
+     ⚙️  CONFIGURACIÓN — TODOS LOS DATOS EDITABLES ESTÁN AQUÍ
+     ───────────────────────────────────────────────────────────────────────
+     Solo modifique los valores dentro de las comillas ' '.
+     No borre las comillas, las comas ni los nombres de las propiedades.
+     ═══════════════════════════════════════════════════════════════════════ */
+  const CONFIG = {
+
+    // ══════════════════════════════════════════════════════════════════
+    // 📞 NÚMEROS DE WHATSAPP
+    // Formato: 57 (código país) + número celular sin espacios ni guiones.
+    // Ejemplo: para 311 644 9629 → '573116449629'
+    // ══════════════════════════════════════════════════════════════════
+    whatsapp: {
+      comercial:      '573116449629',  // 👈 Para cotizaciones / clientes
+      gestionHumana:  '573126711554',  // 👈 Para hojas de vida / candidatos
+    },
+
+    // ══════════════════════════════════════════════════════════════════
+    // 📧 CORREOS ELECTRÓNICOS DE DESTINO
+    // A estos correos llegarán los formularios cuando los envíen.
+    // ══════════════════════════════════════════════════════════════════
+    correos: {
+      cotizacion:  'gerencia@contratamoscomplementos.com',          // 👈 Recibe solicitudes de cotización
+      hojaDeVida:  'gestionhumana@contratamoscomplementos.com',     // 👈 Recibe hojas de vida
+    },
+
+    // ══════════════════════════════════════════════════════════════════
+    // 📨 ENDPOINT DEL FORMULARIO (PHP en Hostinger)
+    // ───────────────────────────────────────────────────────────────────
+    // Esta es la URL del archivo enviar.php que recibe los formularios
+    // y envía los correos. Está incluido en el ZIP que descargó.
+    //
+    // Cómo se sube a Hostinger:
+    //   1. Abra el File Manager de Hostinger (hPanel → Archivos)
+    //   2. Vaya a la carpeta public_html
+    //   3. Suba enviar.php junto a index.html
+    //   4. ¡Listo!
+    //
+    // Si lo pone en una subcarpeta (ej: /api/), cambie la URL a './api/enviar.php'
+    // ══════════════════════════════════════════════════════════════════
+    formEndpoint: './enviar.php',  // 👈 Ruta al archivo PHP en su servidor
+
+    // ══════════════════════════════════════════════════════════════════
+    // 🌐 REDES SOCIALES (URLs)
+    // Cuando creen las redes, reemplace el '#' con la URL completa.
+    // Si una red no existe, déjela como '#' y no se mostrará el enlace activo.
+    // ══════════════════════════════════════════════════════════════════
+    redesSociales: {
+      linkedin:  '#',  // 👈 Ej: 'https://linkedin.com/company/contratamos-complementos'
+      instagram: '#',  // 👈 Ej: 'https://instagram.com/contratamoscomplementos'
+      facebook:  '#',  // 👈 Ej: 'https://facebook.com/contratamoscomplementos'
+    },
+
+  };
+  /* ════════ FIN DE LA CONFIGURACIÓN — Lo de abajo es lógica del sitio ════════ */
+
+  // Helpers internos derivados de CONFIG (no editar)
+  const WA_COMERCIAL = CONFIG.whatsapp.comercial;
+  const WA_GH = CONFIG.whatsapp.gestionHumana;
+
+  // ═══════════════════════════════════════════════════════════════════
+  // INICIALIZACIÓN GENERAL
+  // Aplica la configuración a todos los elementos del sitio al cargar.
+  // ═══════════════════════════════════════════════════════════════════
+
+  // Año actual en el footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Aplica las URLs de redes sociales desde CONFIG a todos los iconos
+  document.querySelectorAll('[data-social]').forEach(link => {
+    const red = link.dataset.social;
+    if (CONFIG.redesSociales[red] && CONFIG.redesSociales[red] !== '#') {
+      link.href = CONFIG.redesSociales[red];
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener');
+    }
+  });
+
+
+
+  // ============= MOBILE MENU =============
+  (function() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileClose = document.querySelector('.mobile-menu-close');
+
+    if (!navToggle || !mobileMenu) return;
+
+    function openMenu() {
+      mobileMenu.classList.add('open');
+      navToggle.classList.add('open');
+      document.documentElement.classList.add('menu-open');
+      document.body.classList.add('menu-open');
+      navToggle.setAttribute('aria-expanded', 'true');
+      mobileMenu.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      navToggle.classList.remove('open');
+      document.documentElement.classList.remove('menu-open');
+      document.body.classList.remove('menu-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+    }
+
+    // Toggle handler — works for both touch and click
+    navToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (mobileMenu.classList.contains('open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    // Close button
+    if (mobileClose) {
+      mobileClose.addEventListener('click', function(e) {
+        e.preventDefault();
+        closeMenu();
+      });
+    }
+
+    // Close when any link inside the menu is tapped
+    mobileMenu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        closeMenu();
+      });
+    });
+
+    // Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu();
+    });
+
+    // Resize to desktop
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 860 && mobileMenu.classList.contains('open')) closeMenu();
+    });
+  })();
+
+  // Tabs
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.form-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      document.getElementById(tab.dataset.target).classList.add('active');
+    });
+  });
+
+  // File input display
+  const fileInput = document.getElementById('h-archivo');
+  const fileLabel = document.getElementById('file-label');
+  const fileName = document.getElementById('file-name');
+  if (fileInput) {
+    fileInput.addEventListener('change', e => {
+      const f = e.target.files && e.target.files[0];
+      if (f) {
+        fileLabel.classList.add('has-file');
+        fileName.textContent = f.name;
+      } else {
+        fileLabel.classList.remove('has-file');
+        fileName.textContent = '';
+      }
+    });
+  }
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* ═══════════════════════════════════════════════════════════════════
+     📝 MANEJO DE FORMULARIOS — VALIDACIÓN + ENVÍO POR CORREO
+     ───────────────────────────────────────────────────────────────────
+     Lógica:
+       1. Al hacer submit, valida cada campo con sus reglas (pattern, type, required)
+       2. Si hay errores, muestra mensajes específicos bajo cada campo
+       3. Si todo está OK, envía los datos por POST a Web3Forms
+       4. Web3Forms reenvía la información al correo configurado en CONFIG
+       5. El usuario ve un mensaje de éxito o error
+     ═══════════════════════════════════════════════════════════════════ */
+
+  // Toast = mensaje flotante de confirmación abajo
+  const toast = document.getElementById('toast');
+  function showToast(msg, isError = false) {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    toast.style.background = isError ? '#c0392b' : '';
+    setTimeout(() => {
+      toast.classList.remove('show');
+      toast.style.background = '';
+    }, 4000);
+  }
+
+  // Mensajes de error personalizados según el tipo de validación
+  function getErrorMessage(input) {
+    const v = input.validity;
+    const name = input.name;
+    if (v.valueMissing) return 'Este campo es obligatorio.';
+    if (v.typeMismatch && input.type === 'email') return 'Ingrese un correo válido (ejemplo@dominio.com).';
+    if (v.patternMismatch) {
+      if (name === 'cedula') return 'La cédula debe contener solo números (6 a 12 dígitos).';
+      if (name === 'nit') return 'NIT inválido. Use solo números, puntos o guiones.';
+      if (name === 'telefono') return 'Teléfono inválido. Use solo números, +, espacios o guiones.';
+      if (name === 'nombre' || name === 'apellido' || name === 'contacto' || name === 'ciudad') {
+        return 'Solo se permiten letras y espacios.';
+      }
+      return 'Formato no válido.';
+    }
+    if (v.tooShort) return `Mínimo ${input.minLength} caracteres.`;
+    if (v.rangeUnderflow) return `El valor mínimo es ${input.min}.`;
+    if (v.rangeOverflow) return `El valor máximo es ${input.max}.`;
+    return 'Valor no válido.';
+  }
+
+  // Valida un solo campo y muestra/oculta el error
+  function validateField(input) {
+    const field = input.closest('.field');
+    const errorEl = field?.querySelector('.field-error');
+    if (!field) return true;
+
+    if (!input.checkValidity()) {
+      field.classList.add('has-error');
+      if (errorEl) errorEl.textContent = getErrorMessage(input);
+      return false;
+    } else {
+      field.classList.remove('has-error');
+      if (errorEl) errorEl.textContent = '';
+      return true;
+    }
+  }
+
+  // Valida el archivo de hoja de vida (tipo y tamaño)
+  function validateFile(input) {
+    const field = input.closest('.field');
+    const errorEl = document.getElementById('file-error');
+
+    if (!input.files || input.files.length === 0) {
+      if (input.required) {
+        field.classList.add('has-error');
+        if (errorEl) errorEl.textContent = 'Debe adjuntar su hoja de vida.';
+        return false;
+      }
+      return true;
+    }
+
+    const file = input.files[0];
+    const maxSize = 5 * 1024 * 1024; // 5 MB
+    const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+    const allowedExts = ['.pdf', '.doc', '.docx'];
+    const ext = file.name.toLowerCase().substring(file.name.lastIndexOf('.'));
+
+    if (!allowedExts.includes(ext) && !allowedTypes.includes(file.type)) {
+      field.classList.add('has-error');
+      if (errorEl) errorEl.textContent = 'Solo se permiten archivos PDF, DOC o DOCX.';
+      return false;
+    }
+
+    if (file.size > maxSize) {
+      field.classList.add('has-error');
+      if (errorEl) errorEl.textContent = `El archivo es muy grande (${(file.size / 1024 / 1024).toFixed(1)} MB). Máximo 5 MB.`;
+      return false;
+    }
+
+    field.classList.remove('has-error');
+    if (errorEl) errorEl.textContent = '';
+    return true;
+  }
+
+  // Configura validación en tiempo real para todos los formularios
+  document.querySelectorAll('form.form').forEach(form => {
+
+    // Filtros de input: bloquea caracteres no permitidos al escribir
+    // Cédula y edad: SOLO números
+    form.querySelectorAll('input[name="cedula"], input[name="edad"]').forEach(input => {
+      input.addEventListener('input', e => {
+        e.target.value = e.target.value.replace(/[^0-9]/g, '');
+      });
+    });
+    // Teléfono: números, +, espacios, paréntesis y guiones
+    form.querySelectorAll('input[name="telefono"]').forEach(input => {
+      input.addEventListener('input', e => {
+        e.target.value = e.target.value.replace(/[^0-9\+\s\-\(\)]/g, '');
+      });
+    });
+    // Nombre, apellido, contacto, ciudad: solo letras y espacios
+    form.querySelectorAll('input[name="nombre"], input[name="apellido"], input[name="contacto"], input[name="ciudad"]').forEach(input => {
+      input.addEventListener('input', e => {
+        e.target.value = e.target.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, '');
+      });
+    });
+    // NIT: números, puntos y guiones
+    form.querySelectorAll('input[name="nit"]').forEach(input => {
+      input.addEventListener('input', e => {
+        e.target.value = e.target.value.replace(/[^0-9\-\.]/g, '');
+      });
+    });
+
+    // Validación al perder el foco (blur) — feedback inmediato al usuario
+    form.querySelectorAll('input, textarea, select').forEach(input => {
+      input.addEventListener('blur', () => {
+        if (input.type === 'file') validateFile(input);
+        else if (input.value.trim() || input.required) validateField(input);
+      });
+      // Cuando el usuario empieza a corregir, oculta el error
+      input.addEventListener('input', () => {
+        const field = input.closest('.field');
+        if (field?.classList.contains('has-error') && input.checkValidity()) {
+          field.classList.remove('has-error');
+          field.querySelector('.field-error').textContent = '';
+        }
+      });
+    });
+
+    // ═══════════════════════════════════════════════════════════════
+    // SUBMIT — Envía el formulario al correo configurado vía Web3Forms
+    // ═══════════════════════════════════════════════════════════════
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const kind = form.dataset.kind; // 'cotizacion' | 'hoja-vida'
+
+      // 1. Validar todos los campos
+      let allValid = true;
+      const inputs = form.querySelectorAll('input, textarea, select');
+      inputs.forEach(input => {
+        let valid;
+        if (input.type === 'file') valid = validateFile(input);
+        else valid = validateField(input);
+        if (!valid) allValid = false;
+      });
+
+      if (!allValid) {
+        showToast('Revise los campos marcados en rojo.', true);
+        // Hace scroll al primer campo con error
+        const firstError = form.querySelector('.field.has-error');
+        if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      // 2. Determinar el correo destino según el tipo de formulario
+      const correoDestino = kind === 'cotizacion'
+        ? CONFIG.correos.cotizacion
+        : CONFIG.correos.hojaDeVida;
+
+      // 3. Preparar los datos para enviar al PHP
+      const formData = new FormData(form);
+      // El PHP usa estos campos para saber a dónde enviar y cómo formatear
+      formData.append('_kind', kind);                    // 'cotizacion' | 'hoja-vida'
+      formData.append('_destino', correoDestino);        // correo a donde llega
+
+      // 4. Mostrar estado "enviando" en el botón
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const btnText = submitBtn.querySelector('.btn-text');
+      const btnSpinner = submitBtn.querySelector('.btn-spinner');
+      const btnArrow = submitBtn.querySelector('.btn-arrow');
+      submitBtn.disabled = true;
+      btnText.textContent = 'Enviando...';
+      btnSpinner.hidden = false;
+      btnArrow.style.display = 'none';
+
+      // 5. Enviar al PHP en el servidor de Hostinger
+      try {
+        const response = await fetch(CONFIG.formEndpoint, {
+          method: 'POST',
+          body: formData
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          showToast(`¡Listo! Su solicitud fue enviada. Le contactaremos pronto.`);
+          form.reset();
+          // Limpia el nombre del archivo mostrado
+          const fileLabel = document.getElementById('file-label');
+          if (fileLabel) fileLabel.classList.remove('has-file');
+        } else {
+          showToast(result.error || 'No fue posible enviar. Intente de nuevo o escríbanos por WhatsApp.', true);
+          console.error('Server error:', result);
+        }
+      } catch (err) {
+        showToast('Error de conexión. Verifique su internet o escríbanos por WhatsApp.', true);
+        console.error('Network error:', err);
+      } finally {
+        // Restaurar el botón a su estado normal
+        submitBtn.disabled = false;
+        btnText.textContent = kind === 'cotizacion' ? 'Enviar solicitud' : 'Enviar hoja de vida';
+        btnSpinner.hidden = true;
+        btnArrow.style.display = '';
+      }
+    });
+  });
+
+  // ============= NEWS & ANNOUNCEMENTS =============
+  // Para agregar nuevas entradas, añada objetos a este array.
+  // Tipos: "oferta" | "noticia" | "comunicado"
+  const NEWS_ITEMS = [
+    {
+      type: 'oferta',
+      date: '2026-04-15',
+      title: 'Operarios de producción — Rionegro, Antioquia',
+      excerpt: 'Buscamos 15 operarios de producción para planta industrial. Turnos rotativos, experiencia mínima de 6 meses en manufactura.',
+      meta: 'Rionegro · Tiempo completo',
+      link: '#formularios'
+    },
+    {
+      type: 'oferta',
+      date: '2026-04-10',
+      title: 'Auxiliares logísticos con disponibilidad inmediata',
+      excerpt: 'Vacantes abiertas para auxiliares logísticos con conocimientos en manejo de inventario y alistamiento de pedidos.',
+      meta: 'Medellín · Turno diurno',
+      link: '#formularios'
+    },
+    {
+      type: 'noticia',
+      date: '2026-03-28',
+      title: 'Ampliamos operaciones en el Oriente Antioqueño',
+      excerpt: 'Con la apertura de nuevas alianzas regionales, fortalecemos nuestra presencia y capacidad de respuesta en el Oriente de Antioquia.',
+      meta: 'Noticia corporativa',
+      link: '#'
+    },
+    {
+      type: 'comunicado',
+      date: '2026-03-20',
+      title: 'Actualización política de tratamiento de datos',
+      excerpt: 'Informamos a nuestros clientes y candidatos sobre la actualización de nuestra política de tratamiento de datos personales conforme a la Ley 1581 de 2012.',
+      meta: 'Para clientes y candidatos',
+      link: '#'
+    },
+    {
+      type: 'oferta',
+      date: '2026-03-15',
+      title: 'Conductores categoría C1 y C2 — Contrato a término indefinido',
+      excerpt: 'Requerimos conductores con experiencia en rutas departamentales. Licencia vigente, documentación al día y disponibilidad para trabajar.',
+      meta: 'Antioquia · Término indefinido',
+      link: '#formularios'
+    },
+    {
+      type: 'noticia',
+      date: '2026-02-18',
+      title: 'Nuevo convenio de bienestar para nuestro personal en misión',
+      excerpt: 'Firmamos un convenio que amplía los beneficios de salud, recreación y formación continua para nuestros colaboradores operativos.',
+      meta: 'Noticia · Bienestar',
+      link: '#'
+    }
+  ];
+
+  const typeLabels = {
+    oferta: 'Oferta laboral',
+    noticia: 'Noticia',
+    comunicado: 'Comunicado'
+  };
+
+  function formatDate(iso) {
+    const d = new Date(iso + 'T00:00:00');
+    const months = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+    return `${d.getDate()} ${months[d.getMonth()]}, ${d.getFullYear()}`;
+  }
+
+  function renderNews(filter = 'all') {
+    const grid = document.getElementById('news-grid');
+    if (!grid) return;
+    const filtered = filter === 'all'
+      ? NEWS_ITEMS
+      : NEWS_ITEMS.filter(n => n.type === filter);
+
+    if (filtered.length === 0) {
+      grid.innerHTML = '<div class="news-empty">No hay publicaciones en esta categoría por ahora.</div>';
+      return;
+    }
+
+    // Sort by date descending
+    const sorted = [...filtered].sort((a, b) => b.date.localeCompare(a.date));
+
+    grid.innerHTML = sorted.map(n => `
+      <a href="${n.link}" class="news-card">
+        <div class="news-card-head">
+          <span class="news-tag type-${n.type}">${typeLabels[n.type]}</span>
+          <span class="news-date">${formatDate(n.date)}</span>
+        </div>
+        <h3 class="news-title">${n.title}</h3>
+        <p class="news-excerpt">${n.excerpt}</p>
+        <div class="news-meta">
+          <span class="news-meta-item">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v6l4 2"/></svg>
+            ${n.meta}
+          </span>
+          <span class="news-link">
+            ${n.type === 'oferta' ? 'Aplicar' : 'Leer más'}
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m0 0L8 2m5 5L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+      </a>
+    `).join('');
+  }
+
+  renderNews();
+
+  document.querySelectorAll('.news-filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.news-filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderNews(btn.dataset.filter);
+    });
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const id = this.getAttribute('href');
+      if (id.length > 1) {
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          window.scrollTo({ top: target.offsetTop - 60, behavior: 'smooth' });
+        }
+      }
+    });
+  });
+
+  /* ═══════════════════════════════════════════════════════════════════
+     🤖 CHATBOT "CARLA" — Lógica conversacional
+     ───────────────────────────────────────────────────────────────────
+     Estructura:
+       - Menú principal con 6 opciones
+       - Cada opción puede llevar a sub-menús o acciones directas
+       - Las acciones pueden: scrollear a una sección, abrir WhatsApp,
+         o mostrar info dentro del chat
+
+     Para AGREGAR una nueva opción al menú principal:
+       1. Cree una función showXXXFlow() siguiendo el patrón de las existentes
+       2. Agréguela al array de opciones en showMainMenu()
+     ═══════════════════════════════════════════════════════════════════ */
+  (function() {
+    const fab = document.getElementById('chatbot-fab');
+    const chatWindow = document.getElementById('chatbot-window');
+    const chatBody = document.getElementById('chatbot-body');
+    const minimizeBtn = document.getElementById('chatbot-minimize');
+
+    if (!fab || !chatWindow || !chatBody) return;
+
+    // ─── Helpers para crear elementos del chat ───────────────────────
+
+    // Agrega una burbuja de mensaje (sender: 'bot' o 'user')
+    function addBubble(text, sender = 'bot') {
+      const div = document.createElement('div');
+      div.className = `chat-bubble ${sender}`;
+      div.innerHTML = text;
+      chatBody.appendChild(div);
+      scrollToBottom();
+      return div;
+    }
+
+    // Agrega un grupo de botones de opciones rápidas
+    function addOptions(options) {
+      const group = document.createElement('div');
+      group.className = 'chat-options';
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'chat-option' + (opt.back ? ' chat-option-back' : '');
+        btn.innerHTML = `
+          ${opt.icon ? `<span class="chat-option-icon">${opt.icon}</span>` : ''}
+          <span>${opt.label}</span>
+        `;
+        btn.addEventListener('click', () => {
+          // Eco del usuario en burbuja del lado derecho
+          addBubble(opt.label, 'user');
+          // Quita las opciones para no poder re-clickear
+          group.remove();
+          // Ejecuta la acción asociada después de "escribiendo..."
+          showTyping(() => opt.action());
+        });
+        group.appendChild(btn);
+      });
+      chatBody.appendChild(group);
+      scrollToBottom();
+    }
+
+    // Indicador "escribiendo..." (simula que Carla piensa)
+    function showTyping(callback, delay = 600) {
+      const typing = document.createElement('div');
+      typing.className = 'chat-typing';
+      typing.innerHTML = '<span></span><span></span><span></span>';
+      chatBody.appendChild(typing);
+      scrollToBottom();
+      setTimeout(() => {
+        typing.remove();
+        callback();
+      }, delay);
+    }
+
+    function scrollToBottom() {
+      requestAnimationFrame(() => {
+        chatBody.scrollTop = chatBody.scrollHeight;
+      });
+    }
+
+    function closeChat() {
+      chatWindow.classList.remove('open');
+      fab.classList.remove('open');
+      fab.setAttribute('aria-expanded', 'false');
+    }
+
+    // Hace scroll a una sección y cierra el chat
+    function goToSection(sectionId) {
+      closeChat();
+      setTimeout(() => {
+        const target = document.getElementById(sectionId);
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    }
+
+    // ─── Iconos SVG para las opciones del menú ──────────────────────
+    const ICONS = {
+      cotizacion:  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
+      hojaVida:    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
+      servicios:   '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>',
+      ofertas:     '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
+      asesor:      '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+      contacto:    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
+      whatsapp:    '<svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>',
+      back:        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>',
+    };
+
+    // ─── FLUJOS DE CONVERSACIÓN ─────────────────────────────────────
+
+    // Menú principal — primera pantalla del chat
+    function showMainMenu() {
+      addBubble(
+        '¡Hola! Soy <strong>Carla</strong>, su asistente virtual de Contratamos Complementos. ¿En qué puedo ayudarle hoy?'
+      );
+      addOptions([
+        { label: 'Solicitar una cotización',     icon: ICONS.cotizacion, action: () => goToSection('formularios') },
+        { label: 'Enviar mi hoja de vida',       icon: ICONS.hojaVida,   action: showHojaVidaFlow },
+        { label: 'Conocer los servicios',        icon: ICONS.servicios,  action: () => goToSection('servicios') },
+        { label: 'Ver ofertas laborales',        icon: ICONS.ofertas,    action: showOfertasFlow },
+        { label: 'Hablar con un asesor',         icon: ICONS.asesor,     action: showAsesorFlow },
+        { label: 'Información de contacto',      icon: ICONS.contacto,   action: showContactoFlow },
+      ]);
+    }
+
+    // Flujo: hoja de vida — formulario o WhatsApp
+    function showHojaVidaFlow() {
+      addBubble('¡Excelente! ¿Cómo prefiere enviarla?');
+      addOptions([
+        { label: 'Llenar el formulario aquí',
+          icon: ICONS.hojaVida,
+          action: () => {
+            goToSection('formularios');
+            // Activa el tab de hoja de vida después de scrollear
+            setTimeout(() => {
+              const tab = document.querySelector('.tab[data-target="panel-candidato"]');
+              if (tab) tab.click();
+            }, 600);
+          }
+        },
+        { label: 'Escribir por WhatsApp a Gestión Humana',
+          icon: ICONS.whatsapp,
+          action: () => openWhatsApp(WA_GH, 'Hola, quisiera enviar mi hoja de vida.')
+        },
+        { label: '← Volver al menú principal', icon: ICONS.back, back: true, action: showMainMenu },
+      ]);
+    }
+
+    // Flujo: ofertas laborales
+    function showOfertasFlow() {
+      addBubble('Perfecto. Tenemos varias ofertas activas — puede revisarlas en la sección de Noticias o aplicar directamente.');
+      addOptions([
+        { label: 'Ver ofertas activas',          icon: ICONS.ofertas,  action: () => {
+            goToSection('noticias');
+            // Aplica el filtro de "ofertas" después de scrollear
+            setTimeout(() => {
+              const filterBtn = document.querySelector('.news-filter[data-filter="oferta"]');
+              if (filterBtn) filterBtn.click();
+            }, 700);
+          }
+        },
+        { label: 'Enviar mi hoja de vida',       icon: ICONS.hojaVida, action: showHojaVidaFlow },
+        { label: '← Volver al menú principal',   icon: ICONS.back, back: true, action: showMainMenu },
+      ]);
+    }
+
+    // Flujo: hablar con asesor (selector de número WhatsApp)
+    function showAsesorFlow() {
+      addBubble('Por supuesto. ¿Con qué área desea comunicarse?');
+      addOptions([
+        { label: 'Comercial / Cotizaciones',
+          icon: ICONS.whatsapp,
+          action: () => openWhatsApp(WA_COMERCIAL, 'Hola, me gustaría recibir información sobre sus servicios.')
+        },
+        { label: 'Gestión Humana / Empleos',
+          icon: ICONS.whatsapp,
+          action: () => openWhatsApp(WA_GH, 'Hola, me comunico desde el sitio web sobre temas de empleo.')
+        },
+        { label: '← Volver al menú principal', icon: ICONS.back, back: true, action: showMainMenu },
+      ]);
+    }
+
+    // Flujo: información de contacto
+    function showContactoFlow() {
+      const tel1 = formatPhone(WA_COMERCIAL);
+      const tel2 = formatPhone(WA_GH);
+      addBubble(`
+        <strong>Nuestros canales de contacto:</strong><br><br>
+        📞 <strong>Comercial:</strong> ${tel1}<br>
+        📞 <strong>Gestión Humana:</strong> ${tel2}<br><br>
+        ✉️ ${CONFIG.correos.cotizacion}<br>
+        ✉️ ${CONFIG.correos.hojaDeVida}<br><br>
+        📍 Vereda Chaparral, Rionegro, Antioquia
+      `);
+      addOptions([
+        { label: 'Ir a la sección de contacto',  icon: ICONS.contacto, action: () => goToSection('contacto') },
+        { label: '← Volver al menú principal',   icon: ICONS.back, back: true, action: showMainMenu },
+      ]);
+    }
+
+    // Convierte '573116449629' en '(+57) 311 644 9629'
+    function formatPhone(num) {
+      if (num.length !== 12) return num;
+      return `(+${num.slice(0,2)}) ${num.slice(2,5)} ${num.slice(5,8)} ${num.slice(8)}`;
+    }
+
+    // Abre WhatsApp con un mensaje pre-cargado en una nueva pestaña
+    function openWhatsApp(numero, mensaje) {
+      addBubble('¡Listo! Le abro WhatsApp en una nueva pestaña.', 'bot');
+      setTimeout(() => {
+        window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
+      }, 600);
+      setTimeout(() => {
+        addOptions([
+          { label: '← Volver al menú principal', icon: ICONS.back, back: true, action: showMainMenu },
+        ]);
+      }, 1200);
+    }
+
+    // ─── EVENTOS ────────────────────────────────────────────────────
+
+    let chatInitialized = false;
+
+    // Click en el botón flotante: abre/cierra el chat
+    fab.addEventListener('click', () => {
+      const isOpen = chatWindow.classList.toggle('open');
+      fab.classList.toggle('open', isOpen);
+      fab.setAttribute('aria-expanded', String(isOpen));
+      // Inicializa el menú la primera vez que se abre
+      if (isOpen && !chatInitialized) {
+        chatInitialized = true;
+        setTimeout(showMainMenu, 300);
+      }
+    });
+
+    // Botón minimizar dentro del chat
+    minimizeBtn.addEventListener('click', closeChat);
+
+    // Cerrar con tecla ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && chatWindow.classList.contains('open')) closeChat();
+    });
+  })();
+</script>
+
+<!-- =============================================================
+     🤖 CHATBOT "CARLA" — Asistente virtual
+     ─────────────────────────────────────────────────────────────
+     Botón flotante + ventana de chat con opciones múltiples.
+     El comportamiento se maneja en el script al final del archivo.
+     ============================================================= -->
+
+<!-- Botón flotante (siempre visible abajo a la derecha) -->
+<button class="chatbot-fab" id="chatbot-fab" aria-label="Abrir asistente virtual" aria-expanded="false">
+  <!-- Ícono cuando está cerrado: chat -->
+  <svg class="chatbot-icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+  <!-- Ícono cuando está abierto: X -->
+  <svg class="chatbot-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+    <path d="M18 6L6 18M6 6l12 12"/>
+  </svg>
+</button>
+
+<!-- Ventana del chat -->
+<div class="chatbot-window" id="chatbot-window" role="dialog" aria-label="Asistente virtual Carla">
+
+  <!-- Header con avatar, nombre y estado -->
+  <header class="chatbot-header">
+    <div class="chatbot-avatar" aria-hidden="true">C</div>
+    <div class="chatbot-header-text">
+      <div class="chatbot-name"><em>Carla</em></div>
+      <div class="chatbot-status">En línea — Asistente virtual</div>
+    </div>
+    <button class="chatbot-minimize" id="chatbot-minimize" aria-label="Minimizar chat">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M5 12h14"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Cuerpo donde se renderizan los mensajes dinámicamente -->
+  <div class="chatbot-body" id="chatbot-body" aria-live="polite"></div>
+
+  <!-- Footer con créditos -->
+  <footer class="chatbot-footer">
+    <div class="chatbot-footer-text">Powered by <strong>Contratamos Complementos</strong></div>
+  </footer>
+</div>
+
+</body>
+</html>
